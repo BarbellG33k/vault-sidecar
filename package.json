@@ -6,8 +6,8 @@
   "scripts": {
     "build:js": "node build-js.js",
     "build": "node build-js.js && eleventy",
-    "dev": "concurrently \"node build-js.js --watch\" \"eleventy --serve\"",
-    "dev:full": "concurrently \"node watcher.js\" \"node build-js.js --watch\" \"eleventy --serve\"",
+    "dev": "concurrently \"node watcher.js\" \"node build-js.js --watch\" \"eleventy --serve\"",
+    "dev:static": "concurrently \"node build-js.js --watch\" \"eleventy --serve\"",
     "test": "vitest --run"
   },
   "dependencies": {

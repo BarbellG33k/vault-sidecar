@@ -48,11 +48,20 @@ export async function ingestFiles(
       const data: IngestResponse = await response.json();
       results.push(data);
     } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
+      const isNetworkError =
+        err instanceof TypeError ||
+        (err instanceof Error && /fetch|network/i.test(err.message));
+
+      const message = isNetworkError
+        ? 'Ingestion server unreachable. Run `npm run dev` to start it.'
+        : err instanceof Error
+          ? err.message
+          : String(err);
+
       results.push({
         status: 'error',
         filename: file.name,
-        message: `Upload failed: ${message}`,
+        message,
       });
     }
   }

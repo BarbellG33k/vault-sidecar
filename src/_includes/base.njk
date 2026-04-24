@@ -4,17 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title or "vault-sidecar" }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
   <a href="#stage-content" class="skip-link">Skip to content</a>
 
   <button id="index-toggle" class="index-toggle" aria-label="Toggle index panel" aria-expanded="false">
-    ☰ Index
+    ☰
   </button>
 
   <div class="app-layout">
     <aside id="index-pane" aria-label="Content index">
+      <div class="sidebar-header">
+        <div class="logo">vault-sidecar</div>
+        <div class="logo-sub">Local-first knowledge base</div>
+      </div>
       <input type="search" placeholder="Search…" value="" aria-label="Search content">
 
       <div class="sort-bar">
@@ -47,7 +54,7 @@
 
     <main id="stage-pane" aria-label="Content stage">
       <div id="stage-welcome" class="stage-welcome" {% if (content | trim) %}style="display: none;"{% endif %}>
-        <p>Select an item from the index to begin reading.</p>
+        <p>Choose a document from the sidebar to start reading</p>
       </div>
       <section id="stage-content">
         {% block content %}{% endblock %}
@@ -56,7 +63,7 @@
   </div>
 
   <div id="ingestion-zone" class="ingestion-zone" aria-label="Drop files here to ingest">
-    <p class="drop-prompt">Drop <code>.md</code>, <code>.html</code>, or <code>.txt</code> files here to add them to your repository.</p>
+    <p class="drop-prompt">Drop <code>.md</code>, <code>.html</code>, or <code>.txt</code> files to ingest</p>
   </div>
 
   <script type="module" src="/assets/js/html-isolator.js"></script>

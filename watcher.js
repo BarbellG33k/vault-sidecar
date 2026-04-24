@@ -125,8 +125,15 @@ function readBody(req) {
   });
 }
 
+function setCorsHeaders(res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+}
+
 function sendJson(res, statusCode, body) {
   const json = JSON.stringify(body);
+  setCorsHeaders(res);
   res.writeHead(statusCode, {
     'Content-Type': 'application/json',
     'Content-Length': Buffer.byteLength(json),
@@ -197,6 +204,12 @@ async function handleIngest(req, res) {
 }
 
 const server = http.createServer(async (req, res) => {
+  if (req.method === 'OPTIONS') {
+    setCorsHeaders(res);
+    res.writeHead(204);
+    res.end();
+    return;
+  }
   if (req.method === 'POST' && req.url === '/ingest') {
     await handleIngest(req, res);
   } else {
