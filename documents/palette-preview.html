@@ -375,37 +375,6 @@
     .palette-archive .logo-sub { color: #94a3b8; }
     .palette-archive .prose code { color: #b45309; }
 
-    /* --- Obsidian --- */
-    .palette-obsidian {
-      --bg: #fafaf9;
-      --bg-sidebar: #f5f5f4;
-      --bg-stage: #fafaf9;
-      --elevated: #fff;
-      --text: #292524;
-      --text-secondary: #44403c;
-      --muted: #78716c;
-      --border: #d6d3d1;
-      --chip-bg: #e7e5e4;
-      --chip-hover: #d6d3d1;
-      --hover: #e7e5e4;
-      --accent: #059669;
-      --accent-glow: rgba(5,150,105,0.25);
-      --accent-border: rgba(5,150,105,0.35);
-      --active-bg: #d1fae5;
-      --active-text: #065f46;
-      --link: #059669;
-      --link-underline: rgba(5,150,105,0.3);
-      --danger: #e11d48;
-      --danger-bg: rgba(225,29,72,0.08);
-      --danger-border: rgba(225,29,72,0.12);
-      --danger-hover: rgba(225,29,72,0.15);
-      --danger-hover-border: rgba(225,29,72,0.25);
-    }
-    .palette-obsidian .logo { color: var(--text); }
-    .palette-obsidian .logo::before { background: var(--accent); }
-    .palette-obsidian .logo-sub { color: #a8a29e; }
-    .palette-obsidian .prose code { color: #047857; }
-
     /* --- Meadow --- */
     .palette-meadow {
       --bg: #dff2d8;
@@ -566,7 +535,6 @@
 
   <div class="tab-bar" role="tablist" aria-label="Palette selector">
     <button class="tab-btn active" data-target="archive" role="tab" aria-selected="true">Archive</button>
-    <button class="tab-btn" data-target="obsidian" role="tab" aria-selected="false">Obsidian</button>
     <button class="tab-btn" data-target="meadow" role="tab" aria-selected="false">Meadow</button>
     <button class="tab-btn" data-target="mist" role="tab" aria-selected="false">Mist</button>
     <button class="tab-btn" data-target="grove" role="tab" aria-selected="false">Grove</button>
@@ -579,52 +547,6 @@
     <!-- Archive -->
     <div class="swatch-wrapper palette-archive" id="swatch-archive">
       <div class="swatch-header">Archive — warm grey + amber gold</div>
-      <div class="swatch">
-        <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
-          <div class="sidebar-header">
-            <div class="logo">vault-sidecar</div>
-            <div class="logo-sub">Local-first knowledge base</div>
-          </div>
-          <input type="search" placeholder="Search…" aria-label="Search content">
-          <div class="sort-bar">
-            <button aria-pressed="true">Recent</button>
-            <button aria-pressed="false">A–Z</button>
-          </div>
-          <div class="type-filter">
-            <button class="type-btn" aria-pressed="true">.md</button>
-            <button class="type-btn" aria-pressed="false">.html</button>
-            <button class="type-btn" aria-pressed="false">.txt</button>
-          </div>
-          <div class="tag-cloud">
-            <button class="tag" aria-pressed="true">design</button>
-            <button class="tag" aria-pressed="false">books</button>
-            <button class="tag" aria-pressed="false">draft</button>
-          </div>
-          <ul class="index-list">
-            <li class="index-item" aria-current="page"><a href="#">Design Principles</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-            <li class="index-item"><a href="#">Hello World</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-            <li class="index-item"><a href="#">Reading List</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-          </ul>
-        </aside>
-        <main style="background: var(--bg-stage);">
-          <article class="prose">
-            <h1>Design Principles</h1>
-            <p>The <strong>vault-sidecar</strong> project follows a few core principles that keep it lightweight and resilient.</p>
-            <h2>Local-first</h2>
-            <p>Your data lives in plain files on your machine. There is no database, no cloud lock-in, and no proprietary format.</p>
-            <blockquote>"The entire site can be built into a folder of static files and hosted anywhere."</blockquote>
-            <p>Markdown and HTML are the native tongues. <a href="#">Learn more</a>.</p>
-            <pre><code>function greet(name) {
-  return `Hello, ${name}!`;
-}</code></pre>
-          </article>
-        </main>
-      </div>
-    </div>
-
-    <!-- Obsidian -->
-    <div class="swatch-wrapper palette-obsidian" id="swatch-obsidian">
-      <div class="swatch-header">Obsidian — stone white + sage emerald</div>
       <div class="swatch">
         <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
           <div class="sidebar-header">
@@ -855,51 +777,6 @@
     <!-- Thicket -->
     <div class="swatch-wrapper palette-thicket" id="swatch-thicket">
       <div class="swatch-header">Thicket — enchanted garden + steel blue</div>
-      <div class="swatch">
-        <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
-          <div class="sidebar-header">
-            <div class="logo">vault-sidecar</div>
-            <div class="logo-sub">Local-first knowledge base</div>
-          </div>
-          <input type="search" placeholder="Search…" aria-label="Search content">
-          <div class="sort-bar">
-            <button aria-pressed="true">Recent</button>
-            <button aria-pressed="false">A–Z</button>
-          </div>
-          <div class="type-filter">
-            <button class="type-btn" aria-pressed="true">.md</button>
-            <button class="type-btn" aria-pressed="false">.html</button>
-            <button class="type-btn" aria-pressed="false">.txt</button>
-          </div>
-          <div class="tag-cloud">
-            <button class="tag" aria-pressed="true">design</button>
-            <button class="tag" aria-pressed="false">books</button>
-            <button class="tag" aria-pressed="false">draft</button>
-          </div>
-          <ul class="index-list">
-            <li class="index-item" aria-current="page"><a href="#">Design Principles</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-            <li class="index-item"><a href="#">Hello World</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-            <li class="index-item"><a href="#">Reading List</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-          </ul>
-        </aside>
-        <main style="background: var(--bg-stage);">
-          <article class="prose">
-            <h1>Design Principles</h1>
-            <p>The <strong>vault-sidecar</strong> project follows a few core principles that keep it lightweight and resilient.</p>
-            <h2>Local-first</h2>
-            <p>Your data lives in plain files on your machine. There is no database, no cloud lock-in, and no proprietary format.</p>
-            <blockquote>"The entire site can be built into a folder of static files and hosted anywhere."</blockquote>
-            <p>Markdown and HTML are the native tongues. <a href="#">Learn more</a>.</p>
-            <pre><code>function greet(name) {
-  return `Hello, ${name}!`;
-}</code></pre>
-          </article>
-        </main>
-      </div>
-    </div>
-
-  </div>
-      <div class="swatch-header">Mist — cool coastal + warm coral</div>
       <div class="swatch">
         <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
           <div class="sidebar-header">
