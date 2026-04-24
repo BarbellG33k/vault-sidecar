@@ -17,7 +17,6 @@
       flex-direction: column;
     }
 
-    /* --- Tab Bar --- */
     .tab-bar {
       display: flex;
       gap: 0.5rem;
@@ -50,7 +49,6 @@
       top: 1px;
     }
 
-    /* --- Preview Stage --- */
     .preview-stage {
       flex: 1;
       overflow: auto;
@@ -78,9 +76,6 @@
       text-transform: uppercase;
     }
 
-    /* ================================================================
-       Shared Swatch Components
-       ================================================================ */
     .swatch { display: flex; height: 560px; }
     .swatch aside {
       width: 280px;
@@ -411,98 +406,36 @@
     .palette-obsidian .logo-sub { color: #a8a29e; }
     .palette-obsidian .prose code { color: #047857; }
 
-    /* --- Editorial --- */
-    .palette-editorial {
-      --bg: #fffcf5;
-      --bg-sidebar: #fffbeb;
-      --bg-stage: #fffcf5;
-      --elevated: #fff;
-      --text: #0f172a;
-      --text-secondary: #1e293b;
-      --muted: #57534e;
-      --border: #d6d3d1;
-      --chip-bg: #f5f5f4;
-      --chip-hover: #e7e5e4;
-      --hover: #f5f5f4;
-      --accent: #4f46e5;
-      --accent-glow: rgba(79,70,229,0.25);
-      --accent-border: rgba(79,70,229,0.35);
-      --active-bg: #e0e7ff;
-      --active-text: #3730a3;
-      --link: #4f46e5;
-      --link-underline: rgba(79,70,229,0.3);
-      --danger: #f43f5e;
-      --danger-bg: rgba(244,63,94,0.08);
-      --danger-border: rgba(244,63,94,0.12);
-      --danger-hover: rgba(244,63,94,0.15);
-      --danger-hover-border: rgba(244,63,94,0.25);
+    /* --- Meadow --- */
+    .palette-meadow {
+      --bg: #dff2d8;
+      --bg-sidebar: #c6dea6;
+      --bg-stage: #dff2d8;
+      --elevated: #eef8e8;
+      --text: #7a6263;
+      --text-secondary: #5e4b4c;
+      --muted: #9e8586;
+      --border: #b8d4a8;
+      --chip-bg: #ced097;
+      --chip-hover: #bfc28a;
+      --hover: rgba(198, 222, 166, 0.5);
+      --accent: #7ebdc3;
+      --accent-glow: rgba(126, 189, 195, 0.35);
+      --accent-border: rgba(126, 189, 195, 0.45);
+      --active-bg: rgba(126, 189, 195, 0.18);
+      --active-text: #4a8a91;
+      --link: #5da3aa;
+      --link-underline: rgba(126, 189, 195, 0.4);
+      --danger: #a67071;
+      --danger-bg: rgba(122, 98, 99, 0.1);
+      --danger-border: rgba(122, 98, 99, 0.15);
+      --danger-hover: rgba(122, 98, 99, 0.18);
+      --danger-hover-border: rgba(122, 98, 99, 0.28);
     }
-    .palette-editorial .logo { color: var(--text); }
-    .palette-editorial .logo::before { background: var(--accent); }
-    .palette-editorial .logo-sub { color: #a8a29e; }
-    .palette-editorial .prose code { color: #4338ca; }
-
-    /* --- Canyon --- */
-    .palette-canyon {
-      --bg: #faf6f1;
-      --bg-sidebar: #f5efe6;
-      --bg-stage: #faf6f1;
-      --elevated: #fff;
-      --text: #29201a;
-      --text-secondary: #3d3028;
-      --muted: #8c7b6b;
-      --border: #d6c8b8;
-      --chip-bg: #eaddcf;
-      --chip-hover: #d6c8b8;
-      --hover: #eaddcf;
-      --accent: #b45309;
-      --accent-glow: rgba(180,83,9,0.25);
-      --accent-border: rgba(180,83,9,0.35);
-      --active-bg: #fed7aa;
-      --active-text: #7c2d12;
-      --link: #b45309;
-      --link-underline: rgba(180,83,9,0.3);
-      --danger: #991b1b;
-      --danger-bg: rgba(153,27,27,0.08);
-      --danger-border: rgba(153,27,27,0.12);
-      --danger-hover: rgba(153,27,27,0.15);
-      --danger-hover-border: rgba(153,27,27,0.25);
-    }
-    .palette-canyon .logo { color: var(--text); }
-    .palette-canyon .logo::before { background: var(--accent); }
-    .palette-canyon .logo-sub { color: #a89a8c; }
-    .palette-canyon .prose code { color: #92400e; }
-
-    /* --- Electric --- */
-    .palette-electric {
-      --bg: #faf9fc;
-      --bg-sidebar: #f5f3f8;
-      --bg-stage: #faf9fc;
-      --elevated: #fff;
-      --text: #1e1b2e;
-      --text-secondary: #2d2a3e;
-      --muted: #6b6578;
-      --border: #ddd6e8;
-      --chip-bg: #eae5f2;
-      --chip-hover: #ddd6e8;
-      --hover: #eae5f2;
-      --accent: #7c3aed;
-      --accent-glow: rgba(124,58,237,0.25);
-      --accent-border: rgba(124,58,237,0.35);
-      --active-bg: #ede9fe;
-      --active-text: #5b21b6;
-      --link: #7c3aed;
-      --link-underline: rgba(124,58,237,0.3);
-      --danger: #e11d48;
-      --danger-bg: rgba(225,29,72,0.08);
-      --danger-border: rgba(225,29,72,0.12);
-      --danger-hover: rgba(225,29,72,0.15);
-      --danger-hover-border: rgba(225,29,72,0.25);
-    }
-    .palette-electric .logo { color: var(--text); }
-    .palette-electric .logo::before { background: var(--accent); }
-    .palette-electric .logo-sub { color: #9c95ab; }
-    .palette-electric .prose code { color: #6d28d9; }
+    .palette-meadow .logo { color: var(--text); }
+    .palette-meadow .logo::before { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
+    .palette-meadow .logo-sub { color: #9e8586; }
+    .palette-meadow .prose code { color: #4a8a91; }
   </style>
 </head>
 <body>
@@ -511,9 +444,7 @@
     <button class="tab-btn active" data-target="midnight" role="tab" aria-selected="true">Midnight</button>
     <button class="tab-btn" data-target="archive" role="tab" aria-selected="false">Archive</button>
     <button class="tab-btn" data-target="obsidian" role="tab" aria-selected="false">Obsidian</button>
-    <button class="tab-btn" data-target="editorial" role="tab" aria-selected="false">Editorial</button>
-    <button class="tab-btn" data-target="canyon" role="tab" aria-selected="false">Canyon</button>
-    <button class="tab-btn" data-target="electric" role="tab" aria-selected="false">Electric</button>
+    <button class="tab-btn" data-target="meadow" role="tab" aria-selected="false">Meadow</button>
   </div>
 
   <div class="preview-stage">
@@ -656,101 +587,9 @@
       </div>
     </div>
 
-    <!-- Editorial -->
-    <div class="swatch-wrapper palette-editorial" id="swatch-editorial">
-      <div class="swatch-header">Editorial — cream + deep indigo</div>
-      <div class="swatch">
-        <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
-          <div class="sidebar-header">
-            <div class="logo">vault-sidecar</div>
-            <div class="logo-sub">Local-first knowledge base</div>
-          </div>
-          <input type="search" placeholder="Search…" aria-label="Search content">
-          <div class="sort-bar">
-            <button aria-pressed="true">Recent</button>
-            <button aria-pressed="false">A–Z</button>
-          </div>
-          <div class="type-filter">
-            <button class="type-btn" aria-pressed="true">.md</button>
-            <button class="type-btn" aria-pressed="false">.html</button>
-            <button class="type-btn" aria-pressed="false">.txt</button>
-          </div>
-          <div class="tag-cloud">
-            <button class="tag" aria-pressed="true">design</button>
-            <button class="tag" aria-pressed="false">books</button>
-            <button class="tag" aria-pressed="false">draft</button>
-          </div>
-          <ul class="index-list">
-            <li class="index-item" aria-current="page"><a href="#">Design Principles</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-            <li class="index-item"><a href="#">Hello World</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-            <li class="index-item"><a href="#">Reading List</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-          </ul>
-        </aside>
-        <main style="background: var(--bg-stage);">
-          <article class="prose">
-            <h1>Design Principles</h1>
-            <p>The <strong>vault-sidecar</strong> project follows a few core principles that keep it lightweight and resilient.</p>
-            <h2>Local-first</h2>
-            <p>Your data lives in plain files on your machine. There is no database, no cloud lock-in, and no proprietary format.</p>
-            <blockquote>"The entire site can be built into a folder of static files and hosted anywhere."</blockquote>
-            <p>Markdown and HTML are the native tongues. <a href="#">Learn more</a>.</p>
-            <pre><code>function greet(name) {
-  return `Hello, ${name}!`;
-}</code></pre>
-          </article>
-        </main>
-      </div>
-    </div>
-
-    <!-- Canyon -->
-    <div class="swatch-wrapper palette-canyon" id="swatch-canyon">
-      <div class="swatch-header">Canyon — warm sand + burnt sienna</div>
-      <div class="swatch">
-        <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
-          <div class="sidebar-header">
-            <div class="logo">vault-sidecar</div>
-            <div class="logo-sub">Local-first knowledge base</div>
-          </div>
-          <input type="search" placeholder="Search…" aria-label="Search content">
-          <div class="sort-bar">
-            <button aria-pressed="true">Recent</button>
-            <button aria-pressed="false">A–Z</button>
-          </div>
-          <div class="type-filter">
-            <button class="type-btn" aria-pressed="true">.md</button>
-            <button class="type-btn" aria-pressed="false">.html</button>
-            <button class="type-btn" aria-pressed="false">.txt</button>
-          </div>
-          <div class="tag-cloud">
-            <button class="tag" aria-pressed="true">design</button>
-            <button class="tag" aria-pressed="false">books</button>
-            <button class="tag" aria-pressed="false">draft</button>
-          </div>
-          <ul class="index-list">
-            <li class="index-item" aria-current="page"><a href="#">Design Principles</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-            <li class="index-item"><a href="#">Hello World</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-            <li class="index-item"><a href="#">Reading List</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
-          </ul>
-        </aside>
-        <main style="background: var(--bg-stage);">
-          <article class="prose">
-            <h1>Design Principles</h1>
-            <p>The <strong>vault-sidecar</strong> project follows a few core principles that keep it lightweight and resilient.</p>
-            <h2>Local-first</h2>
-            <p>Your data lives in plain files on your machine. There is no database, no cloud lock-in, and no proprietary format.</p>
-            <blockquote>"The entire site can be built into a folder of static files and hosted anywhere."</blockquote>
-            <p>Markdown and HTML are the native tongues. <a href="#">Learn more</a>.</p>
-            <pre><code>function greet(name) {
-  return `Hello, ${name}!`;
-}</code></pre>
-          </article>
-        </main>
-      </div>
-    </div>
-
-    <!-- Electric -->
-    <div class="swatch-wrapper palette-electric" id="swatch-electric">
-      <div class="swatch-header">Electric — lavender white + electric violet</div>
+    <!-- Meadow -->
+    <div class="swatch-wrapper palette-meadow" id="swatch-meadow">
+      <div class="swatch-header">Meadow — pale mint + soft teal</div>
       <div class="swatch">
         <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
           <div class="sidebar-header">
