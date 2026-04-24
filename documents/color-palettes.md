@@ -70,3 +70,26 @@ A soft, sun-drenched palette pulled from moss, morning dew, and dried wildflower
 | Delete hover bg | pale rose wash | `rgba(122, 98, 99, 0.1)` |
 
 **Vibe:** Like working inside a greenhouse at golden hour. The teal pops without shouting, the mint background is easy on the eyes, and the dusty-rose text is warmer than slate without being harsh. Surprisingly readable and calm.
+
+---
+
+## Option D — "Mist"
+
+A cool, coastal palette inspired by foggy mornings and tide pools. Pale cream-lime stage, misty blue-grey sidebar, and a **warm coral** accent that cuts through the chill like sunrise. Sophisticated and serene.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | pale cream-lime | `#eef5db` |
+| Index background | misty blue-grey | `#b8d8d8` |
+| Body text | dark slate | `#4f6367` |
+| Muted text | muted teal | `#7a9e9f` |
+| **Accent** | **coral** | **`#fe5f55`** |
+| Accent hover | deep coral | `#e04a3f` |
+| Active item bg | coral wash | `rgba(254, 95, 85, 0.1)` |
+| Active item text | deep coral | `#d1453a` |
+| Tags | mist tint | `#c8ddd8` |
+| Borders | slate wash | `rgba(79, 99, 103, 0.15)` |
+| **Destructive** | **brick coral** | **`#d1453a`** |
+| Delete hover bg | coral wash | `rgba(209, 69, 58, 0.1)` |
+
+**Vibe:** A foggy coastal morning — cool, restrained, and then a sudden flash of warm coral where you need it. The high contrast between the slate text and cream background makes it extremely readable, while the coral prevents it from feeling cold.
