@@ -1,0 +1,12 @@
+# Build output
+_site/
+
+# Generated JS assets (built from TypeScript source)
+src/assets/js/*.js
+src/assets/js/*.js.map
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/

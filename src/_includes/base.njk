@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title or "vault-sidecar" }}</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  <a href="#stage-content" class="skip-link">Skip to content</a>
+
+  <button id="index-toggle" class="index-toggle" aria-label="Toggle index panel" aria-expanded="false">
+    ☰ Index
+  </button>
+
+  <div class="app-layout">
+    <aside id="index-pane" aria-label="Content index">
+      <input type="search" placeholder="Search…" value="" aria-label="Search content">
+
+      <div class="sort-bar">
+        <button data-sort="recent" aria-pressed="true">Recent</button>
+        <button data-sort="alpha" aria-pressed="false">A–Z</button>
+      </div>
+
+      {% set allTags = collections.all | mapAttr('data.tags') | flatten | unique | sort %}
+      {% set hasTags = false %}
+      {% for tag in allTags %}{% if tag %}{% set hasTags = true %}{% endif %}{% endfor %}
+
+      {% if hasTags %}
+      <div class="tag-cloud" aria-label="Tag filter">
+        {% for tag in allTags %}
+          {% if tag %}<button class="tag" data-tag="{{ tag }}">{{ tag }}</button>{% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <ul class="index-list">
+        {% for item in collections.all | reverse %}
+          <li class="index-item" data-id="{{ item.url }}" {% if item.url == page.url %}aria-current="page"{% endif %}>
+            <a href="{{ item.url }}">{{ item.data.title or "Untitled" }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </aside>
+
+    <div id="index-backdrop" class="index-backdrop" aria-hidden="true"></div>
+
+    <main id="stage-pane" aria-label="Content stage">
+      <div id="stage-welcome" class="stage-welcome" {% if (content | trim) %}style="display: none;"{% endif %}>
+        <p>Select an item from the index to begin reading.</p>
+      </div>
+      <section id="stage-content">
+        {% block content %}{% endblock %}
+      </section>
+    </main>
+  </div>
+
+  <div id="ingestion-zone" class="ingestion-zone" aria-label="Drop files here to ingest">
+    <p class="drop-prompt">Drop <code>.md</code>, <code>.html</code>, or <code>.txt</code> files here to add them to your repository.</p>
+  </div>
+
+  <script type="module" src="/assets/js/html-isolator.js"></script>
+  <script type="module" src="/assets/js/index-pane.js"></script>
+  <script type="module" src="/assets/js/stage-pane.js"></script>
+  <script type="module" src="/assets/js/ingestion-zone.js"></script>
+
+  <script type="module">
+    import { renderIndex } from '/assets/js/index-pane.js';
+    import { loadItem } from '/assets/js/stage-pane.js';
+    import { initIngestionZone } from '/assets/js/ingestion-zone.js';
+
+    const indexPane = document.getElementById('index-pane');
+    const stageContent = document.getElementById('stage-content');
+    const stageWelcome = document.getElementById('stage-welcome');
+    const ingestionZone = document.getElementById('ingestion-zone');
+    const indexToggle = document.getElementById('index-toggle');
+    const indexBackdrop = document.getElementById('index-backdrop');
+
+    // Mobile toggle
+    function setIndexOpen(open) {
+      indexToggle.setAttribute('aria-expanded', String(open));
+      indexPane.classList.toggle('index-pane--open', open);
+    }
+
+    if (indexToggle) {
+      indexToggle.addEventListener('click', () => {
+        const expanded = indexToggle.getAttribute('aria-expanded') === 'true';
+        setIndexOpen(!expanded);
+      });
+    }
+
+    // Backdrop click closes mobile panel
+    if (indexBackdrop) {
+      indexBackdrop.addEventListener('click', () => setIndexOpen(false));
+    }
+
+    // Wire ingestion zone (only works when watcher server is running)
+    if (ingestionZone) {
+      initIngestionZone(ingestionZone);
+    }
+
+    // LocalStorage helpers for deleted items
+    function loadDeletedIds() {
+      try {
+        const raw = localStorage.getItem('vault-sidecar-deleted');
+        return raw ? new Set(JSON.parse(raw)) : new Set();
+      } catch {
+        return new Set();
+      }
+    }
+
+    function saveDeletedIds(deletedIds) {
+      localStorage.setItem('vault-sidecar-deleted', JSON.stringify([...deletedIds]));
+    }
+
+    // Progressive enhancement: intercept clicks only after we have index data.
+    // Before the fetch resolves, links navigate normally (full page load).
+    let indexState = {
+      items: [],
+      query: '',
+      selectedTags: new Set(),
+      selectedTypes: new Set(),
+      deletedIds: loadDeletedIds(),
+      sortMode: 'recent',
+      activeItemId: null,
+    };
+
+    function activateItem(item) {
+      indexState.activeItemId = item.id;
+      renderIndex(indexState, indexPane);
+      wireIndexEvents();
+
+      if (stageWelcome) stageWelcome.style.display = 'none';
+      loadItem(item, stageContent);
+
+      // On mobile, close the panel after selection
+      if (window.innerWidth < 1024) {
+        setIndexOpen(false);
+      }
+    }
+
+    indexPane.addEventListener('click', e => {
+      const li = e.target.closest('.index-item');
+      if (!li) return;
+
+      const itemId = li.dataset.id;
+      const item = indexState.items.find(i => i.id === itemId);
+      if (!item) return; // Let native navigation handle it until data loads
+
+      e.preventDefault();
+      activateItem(item);
+    });
+
+    function wireIndexEvents() {
+      // Sort buttons
+      indexPane.querySelectorAll('[data-sort]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          indexState.sortMode = btn.dataset.sort;
+          renderIndex(indexState, indexPane);
+          wireIndexEvents();
+        });
+      });
+
+      // Search input
+      const searchInput = indexPane.querySelector('input[type="search"]');
+      if (searchInput) {
+        searchInput.addEventListener('input', e => {
+          indexState.query = e.target.value;
+          renderIndex(indexState, indexPane);
+          wireIndexEvents();
+        });
+      }
+
+      // Type filter
+      indexPane.querySelectorAll('.type-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.dataset.type;
+          if (indexState.selectedTypes.has(type)) {
+            indexState.selectedTypes.delete(type);
+          } else {
+            indexState.selectedTypes.add(type);
+          }
+          renderIndex(indexState, indexPane);
+          wireIndexEvents();
+        });
+      });
+
+      // Tag cloud
+      indexPane.querySelectorAll('.tag[data-tag]').forEach(tagBtn => {
+        tagBtn.addEventListener('click', () => {
+          const tag = tagBtn.dataset.tag;
+          if (indexState.selectedTags.has(tag)) {
+            indexState.selectedTags.delete(tag);
+          } else {
+            indexState.selectedTags.add(tag);
+          }
+          renderIndex(indexState, indexPane);
+          wireIndexEvents();
+        });
+      });
+
+      // Delete buttons
+      indexPane.querySelectorAll('.index-item__delete').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          const id = btn.dataset.id;
+          const li = btn.closest('.index-item');
+          if (li) {
+            li.classList.add('deleting');
+            setTimeout(() => {
+              indexState.deletedIds.add(id);
+              saveDeletedIds(indexState.deletedIds);
+              renderIndex(indexState, indexPane);
+              wireIndexEvents();
+            }, 280);
+          }
+        });
+      });
+    }
+
+    fetch('/search-index.json')
+      .then(res => res.json())
+      .then(data => {
+        indexState.items = data.items || [];
+        // Hydrate: re-render with fetched data (preserves server-side fallback until now)
+        renderIndex(indexState, indexPane);
+        wireIndexEvents();
+      })
+      .catch(err => {
+        console.error('Failed to load search index:', err);
+        // Keep server-side rendered list as fallback; show subtle error
+        const searchInput = indexPane.querySelector('input[type="search"]');
+        if (searchInput) {
+          searchInput.placeholder = 'Search unavailable';
+          searchInput.disabled = true;
+        }
+      });
+  </script>
+</body>
+</html>

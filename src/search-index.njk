@@ -1,0 +1,19 @@
+---
+permalink: /search-index.json
+eleventyExcludeFromCollections: true
+---
+{
+  "generated": "{{ page.date.toISOString() }}",
+  "items": [
+    {%- for item in collections.all %}
+    {
+      "id": {{ item.url | dump | safe }},
+      "title": {{ (item.data.title or "") | dump | safe }},
+      "tags": {{ (item.data.tags or []) | dump | safe }},
+      "date": "{{ item.data.date.toISOString() if item.data.date else "" }}",
+      "url": {{ item.url | dump | safe }},
+      "type": {% if item.inputPath.endsWith(".html") %}"html"{% elif item.inputPath.endsWith(".txt") %}"text"{% else %}"markdown"{% endif %}
+    }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
