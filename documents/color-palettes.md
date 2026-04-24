@@ -93,3 +93,26 @@ A cool, coastal palette inspired by foggy mornings and tide pools. Pale cream-li
 | Delete hover bg | coral wash | `rgba(209, 69, 58, 0.1)` |
 
 **Vibe:** A foggy coastal morning — cool, restrained, and then a sudden flash of warm coral where you need it. The high contrast between the slate text and cream background makes it extremely readable, while the coral prevents it from feeling cold.
+
+---
+
+## Option E — "Grove"
+
+An earthy, forest-floor palette. Pale seafoam stage, warm terracotta sidebar, and a **rich teal** accent that feels like deep water in a shaded creek. Grounded and quietly confident.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | pale seafoam | `#e0f2e9` |
+| Index background | warm terracotta | `#ceb5a7` |
+| Body text | deep slate-teal | `#5b7b7a` |
+| Muted text | warm brown | `#a17c6b` |
+| **Accent** | **rich teal** | **`#3c887e`** |
+| Accent hover | deep teal | `#2d6b62` |
+| Active item bg | teal wash | `rgba(60, 136, 126, 0.12)` |
+| Active item text | deep teal | `#2d6b62` |
+| Tags | pale clay | `#d9c4b8` |
+| Borders | terracotta tint | `rgba(161, 124, 107, 0.2)` |
+| **Destructive** | **burnt sienna** | **`#a17c6b`** |
+| Delete hover bg | sienna wash | `rgba(161, 124, 107, 0.1)` |
+
+**Vibe:** Walking through a redwood grove after rain. The warm terracotta sidebar feels like bark, the seafoam stage is filtered light, and the rich teal accent is the creek you hear but can't see yet. Sophisticated and organic.
