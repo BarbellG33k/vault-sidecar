@@ -139,3 +139,26 @@ A deep, verdant dark theme — like reading by the light of bioluminescence. Pit
 | Delete hover bg | coral wash | `rgba(232, 165, 152, 0.1)` |
 
 **Vibe:** A night hike through a fern canyon. The darkness is total except for the mint-green glow of phosphorescent moss on the rocks. Every accent feels like it emits its own light.
+
+---
+
+## Option G — "Thicket"
+
+An enchanted palette — twilight in an overgrown garden. Pale sage stage, bright mint accents that hover like fireflies, and a **steel blue** functional highlight against deep plum text. Mysterious and alive.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | pale sage wash | `#edf5f1` |
+| Index background | sage teal | `#92c9b1` |
+| Body text | deep plum | `#571f4e` |
+| Muted text | dusty purple | `#5d5179` |
+| **Accent** | **steel blue** | **`#4f759b`** |
+| Accent hover | deep steel | `#3d5f7d` |
+| Active item bg | blue wash | `rgba(79, 117, 155, 0.12)` |
+| Active item text | steel blue | `#4f759b` |
+| Tags | light sage | `#b8ddd0` |
+| Borders | blue tint | `rgba(79, 117, 155, 0.2)` |
+| **Destructive** | **muted plum** | **`#8b4a6b`** |
+| Delete hover bg | plum wash | `rgba(139, 74, 107, 0.1)` |
+
+**Vibe:** Walking through an overgrown botanical garden at blue hour. Firefly-bright mint accents drift against steel-blue shadows. The deep plum text is rich and readable without being black. A palette that feels like it has secrets.
