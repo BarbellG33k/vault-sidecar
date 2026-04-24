@@ -116,3 +116,26 @@ An earthy, forest-floor palette. Pale seafoam stage, warm terracotta sidebar, an
 | Delete hover bg | sienna wash | `rgba(161, 124, 107, 0.1)` |
 
 **Vibe:** Walking through a redwood grove after rain. The warm terracotta sidebar feels like bark, the seafoam stage is filtered light, and the rich teal accent is the creek you hear but can't see yet. Sophisticated and organic.
+
+---
+
+## Option F — "Fern"
+
+A deep, verdant dark theme — like reading by the light of bioluminescence. Pitch-black evergreen stage, dusty teal sidebar, and **electric mint** accents that glow against the darkness. Alive and immersive.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | deep evergreen | `#00241b` |
+| Index background | dusty teal | `#4e878c` |
+| Body text | electric mint | `#b5ffe1` |
+| Muted text | medium green | `#65b891` |
+| **Accent** | **bright mint** | **`#93e5ab`** |
+| Accent hover | lighter mint | `#b5ffe1` |
+| Active item bg | mint wash | `rgba(147, 229, 171, 0.12)` |
+| Active item text | electric mint | `#b5ffe1` |
+| Tags | teal tint | `rgba(78, 135, 140, 0.35)` |
+| Borders | green wash | `rgba(101, 184, 145, 0.15)` |
+| **Destructive** | **soft coral** | **`#e8a598`** |
+| Delete hover bg | coral wash | `rgba(232, 165, 152, 0.1)` |
+
+**Vibe:** A night hike through a fern canyon. The darkness is total except for the mint-green glow of phosphorescent moss on the rocks. Every accent feels like it emits its own light.
