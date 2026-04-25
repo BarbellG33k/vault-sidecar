@@ -162,3 +162,91 @@ An enchanted palette — twilight in an overgrown garden. Pale sage stage, brigh
 | Delete hover bg | plum wash | `rgba(139, 74, 107, 0.1)` |
 
 **Vibe:** Walking through an overgrown botanical garden at blue hour. Firefly-bright mint accents drift against steel-blue shadows. The deep plum text is rich and readable without being black. A palette that feels like it has secrets.
+
+---
+
+## Option H — "Nightshade"
+
+A dark, botanical-poison palette. Pitch-black plum stage, warm grey bark sidebar, and **electric mint** text with crimson warnings. Like reading a field guide to deadly plants by candlelight.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | pitch plum | `#1e151e` |
+| Index background | dark plum | `#3d2b3d` |
+| Body text | electric mint | `#d0ffce` |
+| Muted text | pale mint | `#cbefb6` |
+| **Accent** | **mint glow** | **`#cbefb6`** |
+| Accent hover | bright mint | `#d0ffce` |
+| Active item bg | mint wash | `rgba(203, 239, 182, 0.12)` |
+| Active item text | bright mint | `#d0ffce` |
+| Tags | bark grey | `#635d5c` |
+| Borders | plum wash | `rgba(99, 93, 92, 0.25)` |
+| **Destructive** | **crimson** | **`#9b1d20`** |
+| Delete hover bg | crimson wash | `rgba(155, 29, 32, 0.15)` |
+
+**Vibe:** A Victorian poison garden at midnight. Every label is written in mint-green ink, and the warnings are blood-red. Dramatic, romantic, and slightly dangerous.
+
+---
+
+## Option I — "Abyss"
+
+A deep-ocean palette that descends from surface blue to crushing darkness. Midnight navy stage, steel-blue sidebar, and a **bright cerulean** accent like a bioluminescent creature in the trench. Clean, immersive, and infinite.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | crushing dark | `#13293d` |
+| Index background | deep navy | `#16324f` |
+| Body text | surface blue | `#3e92cc` |
+| Muted text | steel blue | `#2a628f` |
+| **Accent** | **cerulean** | **`#3e92cc`** |
+| Accent hover | bright blue | `#5aa8db` |
+| Active item bg | blue wash | `rgba(62, 146, 204, 0.12)` |
+| Active item text | bright cerulean | `#5aa8db` |
+| Tags | steel tint | `rgba(42, 98, 143, 0.35)` |
+| Borders | navy wash | `rgba(24, 67, 90, 0.4)` |
+| **Destructive** | **rust coral** | **`#c75b39`** |
+| Delete hover bg | coral wash | `rgba(199, 91, 57, 0.12)` |
+
+**Vibe:** Descending through the ocean layers. The deeper you go, the darker it gets, but the bioluminescent blue cuts through perfectly. Corporate-clean but with depth. A palette for people who think in systems.
+
+---
+
+## Option J — "Lumen"
+
+A high-key, energizing palette — like a design studio whiteboard at 9 AM. Pale mint-white stage, soft blue sidebar, and a **deep navy** functional accent with bright yellow highlights. Optimistic, crisp, and awake.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | pale mint white | `#f7fff7` |
+| Index background | soft blue wash | `#e8f4f8` |
+| Body text | charcoal | `#343434` |
+| Muted text | soft blue | `#6ca6c1` |
+| **Accent** | **deep navy** | **`#2f3061`** |
+| Accent hover | bright navy | `#3d3e7a` |
+| Active item bg | navy wash | `rgba(47, 48, 97, 0.08)` |
+| Active item text | deep navy | `#2f3061` |
+| Tags | ice blue | `#d4e8f0` |
+| Borders | blue mist | `rgba(108, 166, 193, 0.3)` |
+| **Destructive** | **terracotta** | **`#c75b39`** |
+| Delete hover bg | terracotta wash | `rgba(199, 91, 57, 0.1)` |
+
+**Vibe:** A clean desk, a fresh notebook, a bright idea. The yellow (#FFE66D) is reserved for the logo dot and special highlights — like a highlighter pen on clean paper. Everything else is navy discipline on white space.
+
+An enchanted palette — twilight in an overgrown garden. Pale sage stage, bright mint accents that hover like fireflies, and a **steel blue** functional highlight against deep plum text. Mysterious and alive.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | pale sage wash | `#edf5f1` |
+| Index background | sage teal | `#92c9b1` |
+| Body text | deep plum | `#571f4e` |
+| Muted text | dusty purple | `#5d5179` |
+| **Accent** | **steel blue** | **`#4f759b`** |
+| Accent hover | deep steel | `#3d5f7d` |
+| Active item bg | blue wash | `rgba(79, 117, 155, 0.12)` |
+| Active item text | steel blue | `#4f759b` |
+| Tags | light sage | `#b8ddd0` |
+| Borders | blue tint | `rgba(79, 117, 155, 0.2)` |
+| **Destructive** | **muted plum** | **`#8b4a6b`** |
+| Delete hover bg | plum wash | `rgba(139, 74, 107, 0.1)` |
+
+**Vibe:** Walking through an overgrown botanical garden at blue hour. Firefly-bright mint accents drift against steel-blue shadows. The deep plum text is rich and readable without being black. A palette that feels like it has secrets.

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vault-sidecar — Palette Preview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Raleway:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
@@ -606,6 +606,137 @@
     .palette-thicket .logo::before { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
     .palette-thicket .logo-sub { color: #5d5179; }
     .palette-thicket .prose code { color: #3d5f7d; }
+
+    /* --- Nightshade (Playfair Display) --- */
+    .palette-nightshade {
+      --bg: #1e151e;
+      --bg-sidebar: #3d2b3d;
+      --bg-stage: #1e151e;
+      --elevated: #2d202d;
+      --text: #d0ffce;
+      --text-secondary: #cbefb6;
+      --muted: #635d5c;
+      --border: rgba(99, 93, 92, 0.25);
+      --chip-bg: rgba(99, 93, 92, 0.25);
+      --chip-hover: rgba(99, 93, 92, 0.4);
+      --hover: rgba(99, 93, 92, 0.2);
+      --accent: #cbefb6;
+      --accent-glow: rgba(203, 239, 182, 0.35);
+      --accent-border: rgba(203, 239, 182, 0.4);
+      --active-bg: rgba(203, 239, 182, 0.12);
+      --active-text: #d0ffce;
+      --link: #cbefb6;
+      --link-underline: rgba(203, 239, 182, 0.35);
+      --danger: #9b1d20;
+      --danger-bg: rgba(155, 29, 32, 0.15);
+      --danger-border: rgba(155, 29, 32, 0.2);
+      --danger-hover: rgba(155, 29, 32, 0.25);
+      --danger-hover-border: rgba(155, 29, 32, 0.35);
+    }
+    .palette-nightshade .logo { color: var(--text); font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: 0.02em; }
+    .palette-nightshade .logo::before { background: #9b1d20; box-shadow: 0 0 8px rgba(155,29,32,0.5); }
+    .palette-nightshade .logo-sub { color: #635d5c; font-family: 'Playfair Display', Georgia, serif; font-style: italic; letter-spacing: 0.05em; }
+    .palette-nightshade .prose h1,
+    .palette-nightshade .prose h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .palette-nightshade .prose h1 { font-size: 2rem; }
+    .palette-nightshade .prose h2 { font-size: 1.4rem; margin-top: 2rem; }
+    .palette-nightshade .prose p { line-height: 1.75; }
+    .palette-nightshade .prose blockquote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1rem;
+      border-left-width: 3px;
+    }
+    .palette-nightshade .prose code { color: #cbefb6; }
+
+    /* --- Abyss (Raleway) --- */
+    .palette-abyss {
+      --bg: #13293d;
+      --bg-sidebar: #16324f;
+      --bg-stage: #13293d;
+      --elevated: #18435a;
+      --text: #3e92cc;
+      --text-secondary: #5aa8db;
+      --muted: #2a628f;
+      --border: rgba(24, 67, 90, 0.4);
+      --chip-bg: rgba(42, 98, 143, 0.25);
+      --chip-hover: rgba(42, 98, 143, 0.4);
+      --hover: rgba(42, 98, 143, 0.18);
+      --accent: #3e92cc;
+      --accent-glow: rgba(62, 146, 204, 0.35);
+      --accent-border: rgba(62, 146, 204, 0.45);
+      --active-bg: rgba(62, 146, 204, 0.12);
+      --active-text: #5aa8db;
+      --link: #5aa8db;
+      --link-underline: rgba(90, 168, 219, 0.35);
+      --danger: #c75b39;
+      --danger-bg: rgba(199, 91, 57, 0.12);
+      --danger-border: rgba(199, 91, 57, 0.18);
+      --danger-hover: rgba(199, 91, 57, 0.22);
+      --danger-hover-border: rgba(199, 91, 57, 0.32);
+    }
+    .palette-abyss .logo { color: var(--text); font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.95rem; }
+    .palette-abyss .logo::before { background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+    .palette-abyss .logo-sub { color: #2a628f; font-family: 'Raleway', sans-serif; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; }
+    .palette-abyss .prose h1,
+    .palette-abyss .prose h2 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .palette-abyss .prose h1 { font-size: 1.5rem; }
+    .palette-abyss .prose h2 { font-size: 1rem; margin-top: 2rem; }
+    .palette-abyss .prose p { font-family: 'Raleway', sans-serif; line-height: 1.7; font-weight: 500; }
+    .palette-abyss .prose code { color: #5aa8db; font-family: 'Raleway', sans-serif; font-weight: 600; }
+    .palette-abyss .index-item a { font-family: 'Raleway', sans-serif; font-weight: 500; }
+    .palette-abyss .sort-bar button,
+    .palette-abyss .type-btn { font-family: 'Raleway', sans-serif; font-weight: 600; }
+
+    /* --- Lumen (DM Sans) --- */
+    .palette-lumen {
+      --bg: #f7fff7;
+      --bg-sidebar: #e8f4f8;
+      --bg-stage: #f7fff7;
+      --elevated: #fff;
+      --text: #343434;
+      --text-secondary: #4a4a4a;
+      --muted: #6ca6c1;
+      --border: rgba(108, 166, 193, 0.3);
+      --chip-bg: #d4e8f0;
+      --chip-hover: #c0dce8;
+      --hover: #e8f4f8;
+      --accent: #2f3061;
+      --accent-glow: rgba(47, 48, 97, 0.2);
+      --accent-border: rgba(47, 48, 97, 0.3);
+      --active-bg: rgba(47, 48, 97, 0.08);
+      --active-text: #2f3061;
+      --link: #2f3061;
+      --link-underline: rgba(47, 48, 97, 0.25);
+      --danger: #c75b39;
+      --danger-bg: rgba(199, 91, 57, 0.08);
+      --danger-border: rgba(199, 91, 57, 0.12);
+      --danger-hover: rgba(199, 91, 57, 0.15);
+      --danger-hover-border: rgba(199, 91, 57, 0.25);
+    }
+    .palette-lumen .logo { color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+    .palette-lumen .logo::before { background: #ffe66d; box-shadow: 0 0 8px rgba(255,230,109,0.5); }
+    .palette-lumen .logo-sub { color: #6ca6c1; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.06em; }
+    .palette-lumen .prose h1,
+    .palette-lumen .prose h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .palette-lumen .prose h1 { font-size: 1.9rem; }
+    .palette-lumen .prose h2 { font-size: 1.25rem; margin-top: 2rem; }
+    .palette-lumen .prose p { font-family: 'DM Sans', sans-serif; line-height: 1.7; font-weight: 400; }
+    .palette-lumen .prose code { color: #2f3061; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+    .palette-lumen .index-item a { font-family: 'DM Sans', sans-serif; font-weight: 500; }
   </style>
 </head>
 <body>
@@ -618,6 +749,9 @@
     <button class="tab-btn" data-target="grove" role="tab" aria-selected="false">Grove</button>
     <button class="tab-btn" data-target="fern" role="tab" aria-selected="false">Fern</button>
     <button class="tab-btn" data-target="thicket" role="tab" aria-selected="false">Thicket</button>
+    <button class="tab-btn" data-target="nightshade" role="tab" aria-selected="false">Nightshade</button>
+    <button class="tab-btn" data-target="abyss" role="tab" aria-selected="false">Abyss</button>
+    <button class="tab-btn" data-target="lumen" role="tab" aria-selected="false">Lumen</button>
   </div>
 
   <div class="preview-stage">
@@ -944,6 +1078,144 @@
       </div>
     </div>
 
+
+    <!-- Nightshade -->
+    <div class="swatch-wrapper palette-nightshade" id="swatch-nightshade">
+      <div class="swatch-header">Nightshade — dark plum + mint glow</div>
+      <div class="swatch">
+        <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
+          <div class="sidebar-header">
+            <div class="logo">vault-sidecar</div>
+            <div class="logo-sub">Local-first knowledge base</div>
+          </div>
+          <input type="search" placeholder="Search…" aria-label="Search content">
+          <div class="sort-bar">
+            <button aria-pressed="true">Recent</button>
+            <button aria-pressed="false">A–Z</button>
+          </div>
+          <div class="type-filter">
+            <button class="type-btn" aria-pressed="true">.md</button>
+            <button class="type-btn" aria-pressed="false">.html</button>
+            <button class="type-btn" aria-pressed="false">.txt</button>
+          </div>
+          <div class="tag-cloud">
+            <button class="tag" aria-pressed="true">design</button>
+            <button class="tag" aria-pressed="false">books</button>
+            <button class="tag" aria-pressed="false">draft</button>
+          </div>
+          <ul class="index-list">
+            <li class="index-item" aria-current="page"><a href="#">Design Principles</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+            <li class="index-item"><a href="#">Hello World</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+            <li class="index-item"><a href="#">Reading List</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+          </ul>
+        </aside>
+        <main style="background: var(--bg-stage);">
+          <article class="prose">
+            <h1>Design Principles</h1>
+            <p>The <strong>vault-sidecar</strong> project follows a few core principles that keep it lightweight and resilient.</p>
+            <h2>Local-first</h2>
+            <p>Your data lives in plain files on your machine. There is no database, no cloud lock-in, and no proprietary format.</p>
+            <blockquote>"The entire site can be built into a folder of static files and hosted anywhere."</blockquote>
+            <p>Markdown and HTML are the native tongues. <a href="#">Learn more</a>.</p>
+            <pre><code>function greet(name) {
+  return `Hello, ${name}!`;
+}</code></pre>
+          </article>
+        </main>
+      </div>
+    </div>
+
+    <!-- Abyss -->
+    <div class="swatch-wrapper palette-abyss" id="swatch-abyss">
+      <div class="swatch-header">Abyss — deep ocean + cerulean glow</div>
+      <div class="swatch">
+        <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
+          <div class="sidebar-header">
+            <div class="logo">vault-sidecar</div>
+            <div class="logo-sub">Local-first knowledge base</div>
+          </div>
+          <input type="search" placeholder="Search…" aria-label="Search content">
+          <div class="sort-bar">
+            <button aria-pressed="true">Recent</button>
+            <button aria-pressed="false">A–Z</button>
+          </div>
+          <div class="type-filter">
+            <button class="type-btn" aria-pressed="true">.md</button>
+            <button class="type-btn" aria-pressed="false">.html</button>
+            <button class="type-btn" aria-pressed="false">.txt</button>
+          </div>
+          <div class="tag-cloud">
+            <button class="tag" aria-pressed="true">design</button>
+            <button class="tag" aria-pressed="false">books</button>
+            <button class="tag" aria-pressed="false">draft</button>
+          </div>
+          <ul class="index-list">
+            <li class="index-item" aria-current="page"><a href="#">Design Principles</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+            <li class="index-item"><a href="#">Hello World</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+            <li class="index-item"><a href="#">Reading List</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+          </ul>
+        </aside>
+        <main style="background: var(--bg-stage);">
+          <article class="prose">
+            <h1>Design Principles</h1>
+            <p>The <strong>vault-sidecar</strong> project follows a few core principles that keep it lightweight and resilient.</p>
+            <h2>Local-first</h2>
+            <p>Your data lives in plain files on your machine. There is no database, no cloud lock-in, and no proprietary format.</p>
+            <blockquote>"The entire site can be built into a folder of static files and hosted anywhere."</blockquote>
+            <p>Markdown and HTML are the native tongues. <a href="#">Learn more</a>.</p>
+            <pre><code>function greet(name) {
+  return `Hello, ${name}!`;
+}</code></pre>
+          </article>
+        </main>
+      </div>
+    </div>
+
+    <!-- Lumen -->
+    <div class="swatch-wrapper palette-lumen" id="swatch-lumen">
+      <div class="swatch-header">Lumen — bright white + navy discipline</div>
+      <div class="swatch">
+        <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
+          <div class="sidebar-header">
+            <div class="logo">vault-sidecar</div>
+            <div class="logo-sub">Local-first knowledge base</div>
+          </div>
+          <input type="search" placeholder="Search…" aria-label="Search content">
+          <div class="sort-bar">
+            <button aria-pressed="true">Recent</button>
+            <button aria-pressed="false">A–Z</button>
+          </div>
+          <div class="type-filter">
+            <button class="type-btn" aria-pressed="true">.md</button>
+            <button class="type-btn" aria-pressed="false">.html</button>
+            <button class="type-btn" aria-pressed="false">.txt</button>
+          </div>
+          <div class="tag-cloud">
+            <button class="tag" aria-pressed="true">design</button>
+            <button class="tag" aria-pressed="false">books</button>
+            <button class="tag" aria-pressed="false">draft</button>
+          </div>
+          <ul class="index-list">
+            <li class="index-item" aria-current="page"><a href="#">Design Principles</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+            <li class="index-item"><a href="#">Hello World</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+            <li class="index-item"><a href="#">Reading List</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+          </ul>
+        </aside>
+        <main style="background: var(--bg-stage);">
+          <article class="prose">
+            <h1>Design Principles</h1>
+            <p>The <strong>vault-sidecar</strong> project follows a few core principles that keep it lightweight and resilient.</p>
+            <h2>Local-first</h2>
+            <p>Your data lives in plain files on your machine. There is no database, no cloud lock-in, and no proprietary format.</p>
+            <blockquote>"The entire site can be built into a folder of static files and hosted anywhere."</blockquote>
+            <p>Markdown and HTML are the native tongues. <a href="#">Learn more</a>.</p>
+            <pre><code>function greet(name) {
+  return `Hello, ${name}!`;
+}</code></pre>
+          </article>
+        </main>
+      </div>
+    </div>
   </div>
 
   <script>
