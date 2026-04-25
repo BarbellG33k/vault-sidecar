@@ -5,4 +5,17 @@
   <h1>{{ title }}</h1>
   {{ content | safe }}
 </article>
+
+<script>
+  // Add data-language badges to Shiki-highlighted code blocks
+  document.querySelectorAll('.prose pre').forEach(pre => {
+    const code = pre.querySelector('code[class*="language-"]');
+    if (code) {
+      const langClass = Array.from(code.classList).find(c => c.startsWith('language-'));
+      if (langClass) {
+        pre.dataset.language = langClass.replace('language-', '');
+      }
+    }
+  });
+</script>
 {% endblock %}

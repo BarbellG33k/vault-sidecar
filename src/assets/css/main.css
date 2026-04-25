@@ -448,119 +448,600 @@ body::after {
   border-radius: var(--radius-md);
 }
 
-/* --- Prose --- */
+/* --- Prose — Editorial Typography System --- */
 .prose {
-  font-family: 'Inter', system-ui, sans-serif;
-  line-height: 1.75;
+  font-family: 'Source Serif 4', 'Georgia', serif;
+  font-size: 1.0625rem;
+  line-height: 1.72;
   color: var(--text-secondary);
+  letter-spacing: -0.01em;
+  max-width: 72ch;
+  margin: 0 auto;
 }
 
-.prose h1 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  line-height: 1.15;
-}
-
+/* Headings — Inter for structure, Source Serif for h3+ detail */
+.prose h1,
 .prose h2 {
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-family: 'Inter', system-ui, sans-serif;
   color: var(--text-primary);
-  margin-top: 2.5rem;
-  margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  position: relative;
+}
+
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-primary);
+  letter-spacing: -0.015em;
   line-height: 1.25;
 }
 
+.prose h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.prose h2 {
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-weight: 650;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
 .prose h3 {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-primary);
-  margin-top: 2rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.prose h5 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.prose h6 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dim);
+}
+
+/* Heading anchors */
+.prose .header-anchor {
+  position: absolute;
+  left: -1.25em;
+  top: 0.15em;
+  opacity: 0;
+  text-decoration: none;
+  border: none;
+  font-size: 0.75em;
+  color: var(--text-dim);
+  transition: opacity var(--transition-fast);
+}
+
+.prose h1:hover .header-anchor,
+.prose h2:hover .header-anchor,
+.prose h3:hover .header-anchor,
+.prose h4:hover .header-anchor {
+  opacity: 1;
+}
+
+.prose .header-anchor:hover {
+  color: var(--accent-light);
+}
+
+/* Paragraphs */
+.prose p {
+  margin-bottom: 1.35rem;
+}
+
+.prose p + p {
+  text-indent: 0;
+}
+
+/* Lists */
+.prose ul,
+.prose ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.75rem;
+}
+
+.prose ul {
+  list-style: none;
+  padding-left: 1.25rem;
+}
+
+.prose ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 1.1rem;
+}
+
+.prose ul li:not(.task-list-item)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+.prose ol li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.35rem;
+}
+
+.prose ol li::marker {
+  color: var(--accent-light);
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9em;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-.prose p {
-  margin-bottom: 1.25rem;
-  font-size: 0.95rem;
-}
-
-.prose ul,
-.prose ol {
-  margin-bottom: 1.25rem;
-  padding-left: 1.5rem;
-}
-
-.prose li {
+/* Task lists */
+.prose .task-list-item {
+  list-style: none;
+  padding-left: 0;
   margin-bottom: 0.4rem;
-  padding-left: 0.25rem;
 }
 
-.prose li::marker { color: var(--text-dim); }
+.prose .task-list-item::before {
+  display: none;
+}
 
+.prose .task-list-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1em;
+  height: 1.1em;
+  border: 1.5px solid var(--border-hover);
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+  cursor: default;
+  transition: var(--transition-fast);
+}
+
+.prose .task-list-item input[type="checkbox"]:checked {
+  background: var(--accent-dim);
+  border-color: var(--accent-glow);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fbbf24' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Blockquotes */
 .prose blockquote {
-  border-left: 2px solid var(--accent-glow);
-  padding-left: 1.25rem;
-  margin: 1.5rem 0;
+  position: relative;
+  border-left: none;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
   color: var(--text-muted);
   font-style: italic;
-  font-size: 0.95rem;
+  background: linear-gradient(90deg, var(--bg-elevated) 0%, transparent 100%);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
+.prose blockquote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-glow) 100%);
+  border-radius: 0 2px 2px 0;
+}
+
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.prose blockquote cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-style: normal;
+  color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+}
+
+.prose blockquote cite::before {
+  content: '— ';
+}
+
+/* Inline code */
 .prose code {
-  font-family: ui-monospace, 'JetBrains Mono', monospace;
-  font-size: 0.85em;
-  background: var(--bg-elevated);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
-  color: var(--accent-light);
+  font-family: ui-monospace, 'JetBrains Mono', 'SF Mono', monospace;
+  font-size: 0.82em;
+  background: rgba(148, 163, 184, 0.08);
+  padding: 0.15em 0.45em;
+  border-radius: 5px;
+  color: #fbbf24;
   font-weight: 500;
+  word-break: break-word;
 }
 
+.prose a code {
+  color: inherit;
+  border-bottom: none;
+}
+
+/* Code blocks */
 .prose pre {
-  background: var(--bg-elevated);
+  background: var(--bg-deep);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.25rem;
   overflow-x: auto;
-  margin-bottom: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.75rem;
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+.prose pre::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  background: var(--bg-elevated);
+  border-bottom-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-lg);
 }
 
 .prose pre code {
   background: none;
   padding: 0;
   color: var(--text-secondary);
-  font-size: 0.85rem;
-  line-height: 1.65;
+  font-size: 0.875rem;
+  line-height: 1.7;
   font-weight: 400;
+  font-family: ui-monospace, 'JetBrains Mono', 'SF Mono', monospace;
 }
 
+.prose pre .line {
+  display: block;
+  padding: 0 0.25rem;
+}
+
+.prose pre .line.highlighted {
+  background: rgba(245, 158, 11, 0.08);
+  border-radius: 3px;
+}
+
+/* Links */
 .prose a {
   color: var(--accent-light);
   text-decoration: none;
   font-weight: 500;
-  border-bottom: 1px solid rgba(245, 158, 11, 0.25);
-  transition: border-color var(--transition-fast);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .prose a:hover {
   border-color: var(--accent);
+  color: #fcd34d;
 }
 
+.prose a:focus-visible {
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+/* Horizontal rules */
 .prose hr {
   border: none;
-  border-top: 1px solid var(--border);
-  margin: 2.5rem 0;
+  margin: 3rem 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  position: relative;
 }
 
+.prose hr::after {
+  content: '§';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-stage);
+  padding: 0 1rem;
+  color: var(--text-dim);
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Images */
 .prose img {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.prose figure {
+  margin: 2rem 0;
+}
+
+.prose figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  margin-top: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.75rem 0;
+  font-size: 0.9375rem;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.prose thead {
+  background: var(--bg-elevated);
+}
+
+.prose th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.prose td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+.prose tbody tr {
+  transition: background var(--transition-fast);
+}
+
+/* Strong / Emphasis */
+.prose strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+/* Mark / Highlight */
+.prose mark {
+  background: rgba(245, 158, 11, 0.15);
+  color: inherit;
+  padding: 0.1em 0.25em;
+  border-radius: 3px;
+}
+
+/* Del / Strikethrough */
+.prose del {
+  color: var(--text-dim);
+  text-decoration-color: var(--danger);
+}
+
+/* Abbreviations */
+.prose abbr {
+  border-bottom: 1px dotted var(--text-dim);
+  cursor: help;
+}
+
+/* Definition lists */
+.prose dl {
+  margin-bottom: 1.5rem;
+}
+
+.prose dt {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.prose dd {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+/* Footnotes */
+.prose .footnote-ref {
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-left: 0.1em;
+}
+
+.prose .footnote-ref a {
+  border-bottom: none;
+  color: var(--accent-light);
+}
+
+.prose .footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.prose .footnotes ol {
+  padding-left: 1.25rem;
+}
+
+.prose .footnotes li {
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.prose .footnotes li p {
+  margin-bottom: 0.25rem;
+  display: inline;
+}
+
+.prose .footnote-backref {
+  border-bottom: none;
+  margin-left: 0.35rem;
+  font-size: 0.875em;
+}
+
+/* Callouts / Admonitions */
+.callout {
+  margin: 1.75rem 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+}
+
+.callout__title {
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.callout__title::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.callout__body {
+  padding: 0.75rem 1rem;
+  color: var(--text-secondary);
+  background: var(--bg-deep);
+}
+
+.callout__body > *:last-child {
+  margin-bottom: 0;
+}
+
+.callout__body p {
+  margin-bottom: 0.75rem;
+}
+
+.callout--note {
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.callout--note .callout__title {
+  background: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+}
+
+.callout--note .callout__title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2360a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/svg%3E");
+}
+
+.callout--warning {
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+.callout--warning .callout__title {
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+}
+
+.callout--warning .callout__title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23fbbf24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3'/%3E%3Cpath d='M12 9v4'/%3E%3Cpath d='M12 17h.01'/%3E%3C/svg%3E");
+}
+
+.callout--tip {
+  border-color: rgba(74, 222, 128, 0.25);
+}
+
+.callout--tip .callout__title {
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+}
+
+.callout--tip .callout__title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234ade80' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3C/svg%3E");
+}
+
+.callout--danger {
+  border-color: rgba(248, 113, 113, 0.25);
+}
+
+.callout--danger .callout__title {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+
+.callout--danger .callout__title::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f87171' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='15' y1='9' x2='9' y2='15'/%3E%3Cline x1='9' y1='9' x2='15' y2='15'/%3E%3C/svg%3E");
 }
 
 /* --- Text Document --- */
