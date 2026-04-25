@@ -5,6 +5,7 @@ tags:
   - sample
   - markdown
   - documentation
+permalink: /content/sample-markdown/index.html
 ---
 
 # vault-sidecar

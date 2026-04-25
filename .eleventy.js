@@ -5,6 +5,9 @@ import markdownItShiki from '@shikijs/markdown-it';
 const require = createRequire(import.meta.url);
 
 export default async function (eleventyConfig) {
+  // Do not let .gitignore exclude local content files from the build
+  eleventyConfig.setUseGitIgnore(false);
+
   // Configure markdown-it with Shiki for build-time syntax highlighting
   const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
 

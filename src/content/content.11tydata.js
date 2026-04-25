@@ -1,3 +1,5 @@
+import deriveTitle from '../_data/deriveTitle.js';
+
 export default {
   eleventyComputed: {
     layout: (data) => {
@@ -6,5 +8,6 @@ export default {
       if (ext === 'txt') return 'text.njk';
       return 'markdown.njk';
     },
+    title: deriveTitle,
   },
 };

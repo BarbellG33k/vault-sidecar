@@ -1,3 +1,6 @@
+---
+permalink: /content/sample-text/index.html
+---
 Sample Plain-Text Document
 ==========================
 
