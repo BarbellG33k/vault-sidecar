@@ -1,0 +1,32 @@
+Sample Plain-Text Document
+==========================
+
+This is a sample .txt file demonstrating how vault-sidecar handles
+plain-text content.
+
+Unlike Markdown or HTML files, .txt documents are rendered as-is inside
+a <pre> block with monospace formatting. No parsing, no transformation.
+
+Use this format for:
+
+  - Raw notes and scratchpads
+  - Log files you want to archive
+  - Text exports from other tools
+  - Anything where formatting should be preserved exactly
+
+Features of .txt in vault-sidecar:
+
+  1. Front matter is optional (same as Markdown).
+  2. The entire body is wrapped in a <pre class="text-content"> element.
+  3. Syntax highlighting does not apply.
+  4. Tags can still be defined in front matter for indexing.
+
+---
+
+Example content:
+
+  2026-04-23 14:32  Started the vault-sidecar project.
+  2026-04-23 16:15  Implemented drag-and-drop ingestion.
+  2026-04-23 23:45  Committed all changes.
+
+This file was created as a sample for vault-sidecar.

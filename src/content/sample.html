@@ -1,0 +1,123 @@
+---
+title: Sample HTML Document
+date: 2026-04-23
+tags:
+  - sample
+  - html
+  - demo
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample HTML Document</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --accent: #38bdf8;
+    --muted: #94a3b8;
+    --card-bg: #1e293b;
+    --border: rgba(148, 163, 184, 0.2);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .card h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+  }
+
+  .card p {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  code {
+    font-family: ui-monospace, monospace;
+    background: rgba(56, 189, 248, 0.1);
+    padding: 0.15em 0.35em;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent);
+    margin-top: 0.75rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Sample HTML Document</h1>
+<p class="subtitle">Demonstrating HTML isolation in vault-sidecar</p>
+
+<div class="card">
+  <h2>What This Shows</h2>
+  <p>
+    HTML content in vault-sidecar renders inside a Shadow DOM. That means
+    the styles in this document are completely isolated — they will never
+    leak into the app chrome, and the app's CSS will never leak in here.
+  </p>
+</div>
+
+<div class="card">
+  <h2>How It Works</h2>
+  <p>
+    The <code>&lt;html-isolator&gt;</code> custom element reads the raw HTML
+    from a <code>&lt;script type="text/html"&gt;</code> tag, parses it, and
+    injects it into an open Shadow Root attached to itself.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Use Cases</h2>
+  <p>
+    Full HTML documents are perfect for dashboards, reports, portfolios,
+    or any content that needs its own layout and styling independent of
+    the vault's reading interface.
+  </p>
+  <span class="badge">Shadow DOM Isolated</span>
+</div>
+
+</body>
+</html>

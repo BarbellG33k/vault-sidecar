@@ -10,3 +10,25 @@ src/assets/js/*.js.map
 
 # Node
 node_modules/
+
+# ---------------------------------------------------------------------------
+# Content files (proprietary / user data)
+# ---------------------------------------------------------------------------
+# All Markdown, text, and HTML content is ignored by default so proprietary
+# uploads and personal notes never leak into the repository.
+#
+# EXCEPTIONS — sample files that ship with the repo:
+#   src/content/sample.md
+#   src/content/sample.txt
+#   src/content/sample.html
+#   src/content/content.11tydata.js
+# ---------------------------------------------------------------------------
+src/content/*.md
+src/content/*.txt
+src/content/*.html
+
+# Keep samples and directory data
+!src/content/sample.md
+!src/content/sample.txt
+!src/content/sample.html
+!src/content/content.11tydata.js
