@@ -27,7 +27,30 @@ A neutral, grounded palette inspired by physical filing systems and archive labe
 
 ---
 
-## Option B — "Meadow"
+## Option B — "Midnight"
+
+A dark, focused palette for night owls. Pitch-black navy backgrounds with a **warm amber** accent that glows like a desk lamp in a dark room. High contrast without the sterile "blue light" feeling of typical dark themes.
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Stage background | deep navy | `#0b1120` |
+| Index background | slate surface | `#151e32` |
+| Body text | off-white | `#f8fafc` |
+| Muted text | cool grey | `#94a3b8` |
+| **Accent** | **amber** | **`#f59e0b`** |
+| Accent hover | dark amber | `#d97706` |
+| Active item bg | amber glow | `rgba(245, 158, 11, 0.12)` |
+| Active item text | light amber | `#fbbf24` |
+| Tags | slate-700 | `#334155` |
+| Borders | slate-700 | `#334155` |
+| **Destructive** | **soft red** | **`#f87171`** |
+| Delete hover bg | red glow | `rgba(248, 113, 113, 0.15)` |
+
+**Vibe:** Night owl, focused, cinematic. The amber feels like a desk lamp in a dark room. Ideal for late-night reading or if you simply prefer dark interfaces.
+
+---
+
+## Option C — "Meadow"
 
 A soft, sun-drenched palette pulled from moss, morning dew, and dried wildflowers. Very pale mint backgrounds with **soft teal** accents and **warm dusty-rose** text. Gentle, breathable, unhurried.
 
@@ -50,7 +73,7 @@ A soft, sun-drenched palette pulled from moss, morning dew, and dried wildflower
 
 ---
 
-## Option C — "Mist"
+## Option D — "Mist"
 
 A cool, coastal palette inspired by foggy mornings and tide pools. Pale cream-lime stage, misty blue-grey sidebar, and a **warm coral** accent that cuts through the chill like sunrise. Sophisticated and serene.
 
@@ -73,7 +96,7 @@ A cool, coastal palette inspired by foggy mornings and tide pools. Pale cream-li
 
 ---
 
-## Option D — "Grove"
+## Option E — "Grove"
 
 An earthy, forest-floor palette. Pale seafoam stage, warm terracotta sidebar, and a **rich teal** accent that feels like deep water in a shaded creek. Grounded and quietly confident.
 
@@ -96,7 +119,7 @@ An earthy, forest-floor palette. Pale seafoam stage, warm terracotta sidebar, an
 
 ---
 
-## Option E — "Fern"
+## Option F — "Fern"
 
 A deep, verdant dark theme — like reading by the light of bioluminescence. Pitch-black evergreen stage, dusty teal sidebar, and **electric mint** accents that glow against the darkness. Alive and immersive.
 
@@ -119,7 +142,7 @@ A deep, verdant dark theme — like reading by the light of bioluminescence. Pit
 
 ---
 
-## Option F — "Thicket"
+## Option G — "Thicket"
 
 An enchanted palette — twilight in an overgrown garden. Pale sage stage, bright mint accents that hover like fireflies, and a **steel blue** functional highlight against deep plum text. Mysterious and alive.
 

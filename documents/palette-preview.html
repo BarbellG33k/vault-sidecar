@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vault-sidecar — Palette Preview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
@@ -344,7 +344,38 @@
     .palette-midnight .logo-sub { color: #64748b; }
     .palette-midnight .prose code { color: var(--active-text); }
 
-    /* --- Archive --- */
+    /* --- Midnight --- */
+    .palette-midnight {
+      --bg: #0b1120;
+      --bg-sidebar: #151e32;
+      --bg-stage: #0f172a;
+      --elevated: #1e293b;
+      --text: #f8fafc;
+      --text-secondary: #e2e8f0;
+      --muted: #94a3b8;
+      --border: rgba(148,163,184,0.1);
+      --chip-bg: rgba(148,163,184,0.06);
+      --chip-hover: rgba(148,163,184,0.12);
+      --hover: rgba(148,163,184,0.08);
+      --accent: #f59e0b;
+      --accent-glow: rgba(245,158,11,0.35);
+      --accent-border: rgba(245,158,11,0.3);
+      --active-bg: rgba(245,158,11,0.12);
+      --active-text: #fbbf24;
+      --link: #fbbf24;
+      --link-underline: rgba(245,158,11,0.3);
+      --danger: #f87171;
+      --danger-bg: rgba(248,113,113,0.12);
+      --danger-border: rgba(248,113,113,0.15);
+      --danger-hover: rgba(248,113,113,0.2);
+      --danger-hover-border: rgba(248,113,113,0.3);
+    }
+    .palette-midnight .logo { color: var(--text); }
+    .palette-midnight .logo::before { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
+    .palette-midnight .logo-sub { color: #64748b; }
+    .palette-midnight .prose code { color: var(--active-text); }
+
+    /* --- Archive (Editorial Serif) --- */
     .palette-archive {
       --bg: #f8fafc;
       --bg-sidebar: #f1f5f9;
@@ -374,6 +405,20 @@
     .palette-archive .logo::before { background: var(--accent); }
     .palette-archive .logo-sub { color: #94a3b8; }
     .palette-archive .prose code { color: #b45309; }
+    .palette-archive .prose h1,
+    .palette-archive .prose h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .palette-archive .prose h1 { font-size: 2rem; }
+    .palette-archive .prose h2 { font-size: 1.35rem; margin-top: 2rem; }
+    .palette-archive .prose p { line-height: 1.8; }
+    .palette-archive .prose blockquote {
+      border-left-width: 3px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1rem;
+    }
 
     /* --- Meadow --- */
     .palette-meadow {
@@ -498,6 +543,38 @@
     .palette-fern .logo::before { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
     .palette-fern .logo-sub { color: #65b891; }
     .palette-fern .prose code { color: #93e5ab; }
+    .palette-fern .logo,
+    .palette-fern .sort-bar button,
+    .palette-fern .type-btn,
+    .palette-fern .tag,
+    .palette-fern input[type="search"] {
+      font-family: 'Space Mono', ui-monospace, monospace;
+    }
+    .palette-fern .logo { font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.95rem; }
+    .palette-fern .logo-sub { letter-spacing: 0.15em; }
+    .palette-fern .index-item a { font-family: 'Space Mono', ui-monospace, monospace; font-size: 0.78rem; }
+    .palette-fern .prose h1,
+    .palette-fern .prose h2 {
+      font-family: 'Space Mono', ui-monospace, monospace;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    .palette-fern .prose h1 { font-size: 1.4rem; }
+    .palette-fern .prose h2 { font-size: 1rem; margin-top: 2rem; }
+    .palette-fern .prose p {
+      font-family: 'Space Mono', ui-monospace, monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+    .palette-fern .prose code,
+    .palette-fern .prose pre {
+      font-family: 'Space Mono', ui-monospace, monospace;
+    }
+    .palette-fern .prose a {
+      font-family: 'Space Mono', ui-monospace, monospace;
+      font-weight: 700;
+    }
 
     /* --- Thicket --- */
     .palette-thicket {
@@ -534,7 +611,8 @@
 <body>
 
   <div class="tab-bar" role="tablist" aria-label="Palette selector">
-    <button class="tab-btn active" data-target="archive" role="tab" aria-selected="true">Archive</button>
+    <button class="tab-btn active" data-target="midnight" role="tab" aria-selected="true">Midnight</button>
+    <button class="tab-btn" data-target="archive" role="tab" aria-selected="false">Archive</button>
     <button class="tab-btn" data-target="meadow" role="tab" aria-selected="false">Meadow</button>
     <button class="tab-btn" data-target="mist" role="tab" aria-selected="false">Mist</button>
     <button class="tab-btn" data-target="grove" role="tab" aria-selected="false">Grove</button>
@@ -543,6 +621,52 @@
   </div>
 
   <div class="preview-stage">
+    <!-- Midnight -->
+    <div class="swatch-wrapper palette-midnight active" id="swatch-midnight">
+      <div class="swatch-header">Midnight — deep navy + warm amber</div>
+      <div class="swatch">
+        <aside style="background: var(--bg-sidebar); border-right: 1px solid var(--border);">
+          <div class="sidebar-header">
+            <div class="logo">vault-sidecar</div>
+            <div class="logo-sub">Local-first knowledge base</div>
+          </div>
+          <input type="search" placeholder="Search…" aria-label="Search content">
+          <div class="sort-bar">
+            <button aria-pressed="true">Recent</button>
+            <button aria-pressed="false">A–Z</button>
+          </div>
+          <div class="type-filter">
+            <button class="type-btn" aria-pressed="true">.md</button>
+            <button class="type-btn" aria-pressed="false">.html</button>
+            <button class="type-btn" aria-pressed="false">.txt</button>
+          </div>
+          <div class="tag-cloud">
+            <button class="tag" aria-pressed="true">design</button>
+            <button class="tag" aria-pressed="false">books</button>
+            <button class="tag" aria-pressed="false">draft</button>
+          </div>
+          <ul class="index-list">
+            <li class="index-item" aria-current="page"><a href="#">Design Principles</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+            <li class="index-item"><a href="#">Hello World</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+            <li class="index-item"><a href="#">Reading List</a><button class="index-item__delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></li>
+          </ul>
+        </aside>
+        <main style="background: var(--bg-stage);">
+          <article class="prose">
+            <h1>Design Principles</h1>
+            <p>The <strong>vault-sidecar</strong> project follows a few core principles that keep it lightweight and resilient.</p>
+            <h2>Local-first</h2>
+            <p>Your data lives in plain files on your machine. There is no database, no cloud lock-in, and no proprietary format.</p>
+            <blockquote>"The entire site can be built into a folder of static files and hosted anywhere."</blockquote>
+            <p>Markdown and HTML are the native tongues. <a href="#">Learn more</a>.</p>
+            <pre><code>function greet(name) {
+  return `Hello, ${name}!`;
+}</code></pre>
+          </article>
+        </main>
+      </div>
+    </div>
+
 
     <!-- Archive -->
     <div class="swatch-wrapper palette-archive" id="swatch-archive">
