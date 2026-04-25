@@ -22,32 +22,39 @@
         <div class="logo">vault-sidecar</div>
         <div class="logo-sub">Local-first knowledge base</div>
       </div>
-      <input type="search" placeholder="Search…" value="" aria-label="Search content">
 
-      <div class="sort-bar">
-        <button data-sort="recent" aria-pressed="true">Recent</button>
-        <button data-sort="alpha" aria-pressed="false">A–Z</button>
+      <div id="index-content">
+        <input type="search" placeholder="Search…" value="" aria-label="Search content">
+
+        <div class="sort-bar">
+          <button data-sort="recent" aria-pressed="true">Recent</button>
+          <button data-sort="alpha" aria-pressed="false">A–Z</button>
+        </div>
+
+        {% set allTags = collections.all | mapAttr('data.tags') | flatten | unique | sort %}
+        {% set hasTags = false %}
+        {% for tag in allTags %}{% if tag %}{% set hasTags = true %}{% endif %}{% endfor %}
+
+        {% if hasTags %}
+        <div class="tag-cloud" aria-label="Tag filter">
+          {% for tag in allTags %}
+            {% if tag %}<button class="tag" data-tag="{{ tag }}">{{ tag }}</button>{% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <ul class="index-list">
+          {% for item in collections.all | reverse %}
+            <li class="index-item" data-id="{{ item.url }}" {% if item.url == page.url %}aria-current="page"{% endif %}>
+              <a href="{{ item.url }}">{{ item.data.title or "Untitled" }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
 
-      {% set allTags = collections.all | mapAttr('data.tags') | flatten | unique | sort %}
-      {% set hasTags = false %}
-      {% for tag in allTags %}{% if tag %}{% set hasTags = true %}{% endif %}{% endfor %}
-
-      {% if hasTags %}
-      <div class="tag-cloud" aria-label="Tag filter">
-        {% for tag in allTags %}
-          {% if tag %}<button class="tag" data-tag="{{ tag }}">{{ tag }}</button>{% endif %}
-        {% endfor %}
+      <div id="ingestion-zone" class="ingestion-zone" data-watcher-url="{{ watcher.url }}" aria-label="Drop files here to ingest">
+        <p class="drop-prompt">Drop <code>.md</code>, <code>.html</code>, or <code>.txt</code> files to ingest</p>
       </div>
-      {% endif %}
-
-      <ul class="index-list">
-        {% for item in collections.all | reverse %}
-          <li class="index-item" data-id="{{ item.url }}" {% if item.url == page.url %}aria-current="page"{% endif %}>
-            <a href="{{ item.url }}">{{ item.data.title or "Untitled" }}</a>
-          </li>
-        {% endfor %}
-      </ul>
     </aside>
 
     <div id="index-backdrop" class="index-backdrop" aria-hidden="true"></div>
@@ -62,10 +69,6 @@
     </main>
   </div>
 
-  <div id="ingestion-zone" class="ingestion-zone" aria-label="Drop files here to ingest">
-    <p class="drop-prompt">Drop <code>.md</code>, <code>.html</code>, or <code>.txt</code> files to ingest</p>
-  </div>
-
   <script type="module" src="/assets/js/html-isolator.js"></script>
   <script type="module" src="/assets/js/index-pane.js"></script>
   <script type="module" src="/assets/js/stage-pane.js"></script>
@@ -77,6 +80,7 @@
     import { initIngestionZone } from '/assets/js/ingestion-zone.js';
 
     const indexPane = document.getElementById('index-pane');
+    const indexContent = document.getElementById('index-content');
     const stageContent = document.getElementById('stage-content');
     const stageWelcome = document.getElementById('stage-welcome');
     const ingestionZone = document.getElementById('ingestion-zone');
@@ -103,7 +107,8 @@
 
     // Wire ingestion zone (only works when watcher server is running)
     if (ingestionZone) {
-      initIngestionZone(ingestionZone);
+      const watcherUrl = ingestionZone.dataset.watcherUrl;
+      initIngestionZone(ingestionZone, watcherUrl);
     }
 
     // LocalStorage helpers for deleted items
@@ -134,7 +139,7 @@
 
     function activateItem(item) {
       indexState.activeItemId = item.id;
-      renderIndex(indexState, indexPane);
+      renderIndex(indexState, indexContent);
       wireIndexEvents();
 
       if (stageWelcome) stageWelcome.style.display = 'none';
@@ -163,7 +168,7 @@
       indexPane.querySelectorAll('[data-sort]').forEach(btn => {
         btn.addEventListener('click', () => {
           indexState.sortMode = btn.dataset.sort;
-          renderIndex(indexState, indexPane);
+          renderIndex(indexState, indexContent);
           wireIndexEvents();
         });
       });
@@ -173,7 +178,7 @@
       if (searchInput) {
         searchInput.addEventListener('input', e => {
           indexState.query = e.target.value;
-          renderIndex(indexState, indexPane);
+          renderIndex(indexState, indexContent);
           wireIndexEvents();
         });
       }
@@ -187,7 +192,7 @@
           } else {
             indexState.selectedTypes.add(type);
           }
-          renderIndex(indexState, indexPane);
+          renderIndex(indexState, indexContent);
           wireIndexEvents();
         });
       });
@@ -201,7 +206,7 @@
           } else {
             indexState.selectedTags.add(tag);
           }
-          renderIndex(indexState, indexPane);
+          renderIndex(indexState, indexContent);
           wireIndexEvents();
         });
       });
@@ -218,7 +223,7 @@
             setTimeout(() => {
               indexState.deletedIds.add(id);
               saveDeletedIds(indexState.deletedIds);
-              renderIndex(indexState, indexPane);
+              renderIndex(indexState, indexContent);
               wireIndexEvents();
             }, 280);
           }
@@ -231,7 +236,7 @@
       .then(data => {
         indexState.items = data.items || [];
         // Hydrate: re-render with fetched data (preserves server-side fallback until now)
-        renderIndex(indexState, indexPane);
+        renderIndex(indexState, indexContent);
         wireIndexEvents();
       })
       .catch(err => {

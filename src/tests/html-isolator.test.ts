@@ -203,4 +203,22 @@ describe('HtmlIsolator unit tests', () => {
       expect.any(Error)
     );
   });
+
+  it('reads inline HTML from a script element when src starts with #', () => {
+    const script = document.createElement('script');
+    script.type = 'text/html';
+    script.id = 'inline-html';
+    script.textContent = '<html><head><style>p { color: blue; }</style></head><body><p id="inline-para">Inline content</p></body></html>';
+    document.body.appendChild(script);
+
+    el.setAttribute('src', '#inline-html');
+    el.connectedCallback();
+
+    expect(el.shadowRoot).not.toBeNull();
+    const para = el.shadowRoot!.querySelector('#inline-para');
+    expect(para).not.toBeNull();
+    expect(para!.textContent).toBe('Inline content');
+
+    document.body.removeChild(script);
+  });
 });

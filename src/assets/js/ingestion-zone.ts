@@ -45,6 +45,18 @@ export async function ingestFiles(
         body: formData,
       });
 
+      if (!response.ok) {
+        let message = `Server error (${response.status})`;
+        try {
+          const data = await response.json();
+          if (data.message) message = data.message;
+        } catch {
+          // ignore parse error
+        }
+        results.push({ status: 'error', filename: file.name, message });
+        continue;
+      }
+
       const data: IngestResponse = await response.json();
       results.push(data);
     } catch (err) {

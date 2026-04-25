@@ -1,5 +1,8 @@
 {% extends "base.njk" %}
 
 {% block content %}
-<html-isolator src="{{ page.url }}"></html-isolator>
+<script type="text/html" id="raw-html-content">
+{{ content | safe }}
+</script>
+<html-isolator src="#raw-html-content"></html-isolator>
 {% endblock %}

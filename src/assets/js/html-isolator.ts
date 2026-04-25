@@ -7,6 +7,16 @@ export class HtmlIsolator extends HTMLElement {
     const src = this.getAttribute('src');
     if (!src) return;
 
+    if (src.startsWith('#')) {
+      const el = document.querySelector(src);
+      if (el) {
+        this.renderShadow(el.textContent || '');
+        return;
+      }
+      console.error(`HtmlIsolator: could not find element ${src}`);
+      return;
+    }
+
     if (this.hasAttribute('fallback-iframe')) {
       this.renderIframe(src);
     } else {

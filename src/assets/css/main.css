@@ -90,7 +90,7 @@ body::after {
 /* --- App Layout --- */
 .app-layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: minmax(260px, 20%) 1fr;
   height: 100vh;
   overflow: hidden;
 }
@@ -100,10 +100,19 @@ body::after {
   background: var(--bg-surface);
   border-right: 1px solid var(--border);
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 0;
+}
+
+#index-content {
+  flex: 1;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  min-height: 0;
 }
 
 .sidebar-header {
@@ -171,12 +180,39 @@ body::after {
   flex-wrap: wrap;
 }
 
-.sort-bar button,
-.type-btn {
-  padding: 0.3rem 0.65rem;
+/* Sort buttons: large pill-shaped controls */
+.sort-bar button {
+  padding: 0.35rem 0.9rem;
   background: var(--bg-hover);
   border: 1px solid transparent;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-family: ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.sort-bar button:hover {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--text-secondary);
+}
+
+.sort-bar button[aria-pressed="true"] {
+  background: var(--accent-dim);
+  color: var(--accent-light);
+  border-color: var(--accent-glow);
+}
+
+/* Type filter buttons: square dashed chips (file-extension feel) */
+.type-btn {
+  padding: 0.25rem 0.55rem;
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: 3px;
   color: var(--text-muted);
   font-family: ui-monospace, monospace;
   font-size: 0.7rem;
@@ -185,16 +221,16 @@ body::after {
   transition: var(--transition-fast);
 }
 
-.sort-bar button:hover,
 .type-btn:hover {
-  background: rgba(148, 163, 184, 0.15);
+  background: var(--bg-hover);
   color: var(--text-secondary);
+  border-style: solid;
 }
 
-.sort-bar button[aria-pressed="true"],
 .type-btn[aria-pressed="true"] {
   background: var(--accent-dim);
   color: var(--accent-light);
+  border-style: solid;
   border-color: var(--accent-glow);
 }
 
@@ -205,16 +241,23 @@ body::after {
   gap: 0.35rem;
 }
 
+/* Tags: small lozenge labels with # prefix */
 .tag {
-  padding: 0.2rem 0.55rem;
+  padding: 0.15rem 0.5rem;
   background: rgba(148, 163, 184, 0.06);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 999px;
   font-size: 0.7rem;
   font-weight: 500;
   color: var(--text-muted);
   cursor: pointer;
   transition: var(--transition-fast);
+}
+
+.tag::before {
+  content: '#';
+  margin-right: 0.15em;
+  opacity: 0.5;
 }
 
 .tag:hover {
@@ -354,7 +397,7 @@ body::after {
 /* --- Stage Pane --- */
 #stage-pane {
   background: var(--bg-stage);
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.25rem, 2.5vw, 2.5rem);
   overflow-y: auto;
   position: relative;
 }
@@ -375,8 +418,6 @@ body::after {
 #stage-content {
   position: relative;
   z-index: 1;
-  max-width: 680px;
-  margin: 0 auto;
 }
 
 /* --- Welcome Screen --- */
@@ -538,20 +579,14 @@ body::after {
 
 /* --- Ingestion Zone --- */
 .ingestion-zone {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 100;
-  background: rgba(21, 30, 50, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1rem 1.25rem;
-  font-size: 0.8125rem;
+  margin-top: auto;
+  flex-shrink: 0;
+  background: var(--bg-deep);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  box-shadow: var(--shadow-lg);
-  max-width: 300px;
   transition: var(--transition-base);
 }
 
@@ -571,10 +606,8 @@ body::after {
 
 .ingestion-zone.drag-over {
   border-color: var(--accent-glow);
-  background: rgba(21, 30, 50, 0.98);
-  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.08), var(--shadow-lg);
+  background: var(--bg-elevated);
   color: var(--accent-light);
-  transform: scale(1.02);
 }
 
 .ingestion-zone.uploading { opacity: 0.85; }

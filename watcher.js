@@ -11,7 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const CONFIG = {
   contentDir: path.join(__dirname, 'src', 'content'),
-  port: 3001,
+  port: parseInt(process.env.WATCHER_PORT, 10) || 3001,
   debounceMs: 300,
 };
 
@@ -219,6 +219,13 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(CONFIG.port, () => {
   console.log(`[watcher] HTTP server listening on port ${CONFIG.port}`);
+}).on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`[watcher] Port ${CONFIG.port} is already in use.`);
+    console.error(`[watcher] Set a different port with: WATCHER_PORT=3002 npm run dev`);
+    process.exit(1);
+  }
+  throw err;
 });
 
 // ---------------------------------------------------------------------------

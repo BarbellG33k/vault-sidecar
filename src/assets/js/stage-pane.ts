@@ -43,10 +43,19 @@ export async function loadItem(item: ContentItem, stageEl: HTMLElement): Promise
         stageEl.innerHTML = doc.body.innerHTML;
       }
     } else {
-      // HTML item: use html-isolator custom element
+      // HTML item: fetch the rendered page, extract raw HTML from <script type="text/html">
+      const response = await fetch(item.url);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const scriptEl = doc.querySelector('script[type="text/html"]');
+      const rawHtml = scriptEl ? scriptEl.textContent || '' : html;
+
       stageEl.innerHTML = '';
       const isolator = document.createElement('html-isolator');
-      isolator.setAttribute('src', item.url);
+      isolator.renderShadow(rawHtml);
       stageEl.appendChild(isolator);
     }
   } catch (err) {

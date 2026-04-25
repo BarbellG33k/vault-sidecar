@@ -1,0 +1,818 @@
+---
+title: Liam's Roth IRA — Strategy & Execution Plan
+tags: [roth, liam, execution-plan]
+date: 2026-04-22
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liam's Roth IRA — Strategy & Execution Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --bg: #0a0e14;
+    --bg2: #111720;
+    --bg3: #181f2c;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8edf5;
+    --muted: #7a8699;
+    --faint: #3a4558;
+    --green: #22c55e;
+    --green-dim: rgba(34,197,94,0.12);
+    --green-border: rgba(34,197,94,0.3);
+    --red: #f87171;
+    --red-dim: rgba(248,113,113,0.1);
+    --red-border: rgba(248,113,113,0.28);
+    --amber: #fbbf24;
+    --amber-dim: rgba(251,191,36,0.1);
+    --amber-border: rgba(251,191,36,0.28);
+    --blue: #60a5fa;
+    --blue-dim: rgba(96,165,250,0.1);
+    --blue-border: rgba(96,165,250,0.28);
+    --teal: #2dd4bf;
+    --teal-dim: rgba(45,212,191,0.1);
+    --teal-border: rgba(45,212,191,0.28);
+    --accent: #7c6af7;
+    --accent-dim: rgba(124,106,247,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* header */
+  .header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border2);
+    padding: 32px 48px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .acct-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .acct-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .acct-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .header-stats {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .hstat {
+    text-align: right;
+  }
+  .hstat-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .hstat-val.pos { color: var(--green); }
+  .hstat-val.warn { color: var(--amber); }
+  .hstat-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .principle-bar {
+    background: var(--accent-dim);
+    border: 1px solid rgba(124,106,247,0.25);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .principle-bar span { color: var(--accent); font-weight: 500; }
+
+  /* main layout */
+  .main {
+    padding: 32px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+  }
+
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .card.full { grid-column: 1 / -1; }
+
+  .card-header {
+    padding: 14px 18px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .card-body { padding: 16px 18px; }
+
+  /* badges */
+  .badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-family: 'Syne', sans-serif;
+  }
+  .badge-sell { background: var(--red-dim); border: 1px solid var(--red-border); color: var(--red); }
+  .badge-keep { background: var(--green-dim); border: 1px solid var(--green-border); color: var(--green); }
+  .badge-add  { background: var(--teal-dim); border: 1px solid var(--teal-border); color: var(--teal); }
+  .badge-watch { background: var(--amber-dim); border: 1px solid var(--amber-border); color: var(--amber); }
+  .badge-deploy { background: var(--blue-dim); border: 1px solid var(--blue-border); color: var(--blue); }
+  .badge-wait { background: var(--accent-dim); border: 1px solid rgba(124,106,247,0.3); color: var(--accent); }
+
+  /* position rows */
+  .pos-row {
+    display: grid;
+    grid-template-columns: 52px 1fr 60px 70px 70px;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pos-row:last-child { border-bottom: none; }
+  .pos-sym {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .pos-name { font-size: 11px; color: var(--muted); }
+  .pos-val { font-size: 12px; color: var(--text); text-align: right; }
+  .pos-gain { font-size: 12px; text-align: right; }
+  .pos-gain.pos { color: var(--green); }
+  .pos-gain.neg { color: var(--red); }
+  .pos-gain.flat { color: var(--muted); }
+  .pos-action { text-align: right; }
+
+  /* allocation bars */
+  .alloc-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+  }
+  .alloc-row:last-child { margin-bottom: 0; }
+  .alloc-sym {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    width: 44px;
+    flex-shrink: 0;
+    color: var(--muted);
+    text-align: right;
+  }
+  .alloc-bg {
+    flex: 1;
+    height: 6px;
+    background: var(--bg3);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .alloc-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+  .alloc-pct {
+    font-size: 11px;
+    width: 36px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .alloc-label {
+    font-size: 10px;
+    width: 80px;
+    flex-shrink: 0;
+    color: var(--faint);
+  }
+
+  /* action items */
+  .action-item {
+    padding: 12px 14px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    border: 1px solid;
+  }
+  .action-item:last-child { margin-bottom: 0; }
+  .action-item.sell { background: var(--red-dim); border-color: var(--red-border); }
+  .action-item.keep { background: var(--green-dim); border-color: var(--green-border); }
+  .action-item.deploy { background: var(--blue-dim); border-color: var(--blue-border); }
+  .action-item.watch { background: var(--amber-dim); border-color: var(--amber-border); }
+  .action-item.wait { background: var(--accent-dim); border-color: rgba(124,106,247,0.3); }
+
+  .action-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .action-sym {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .action-name { font-size: 11px; color: var(--muted); }
+  .action-body { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .action-detail {
+    font-size: 10px;
+    color: var(--faint);
+    margin-top: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  /* entry point table */
+  .entry-table { width: 100%; border-collapse: collapse; }
+  .entry-table th {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  .entry-table th.r { text-align: right; }
+  .entry-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .entry-table tr:last-child td { border-bottom: none; }
+  .entry-sym {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .entry-name { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .entry-cur { font-size: 12px; color: var(--text); text-align: right; }
+  .entry-zone {
+    text-align: right;
+    font-size: 12px;
+  }
+  .entry-zone .z1 { color: var(--amber); }
+  .entry-zone .z2 { color: var(--green); display: block; font-size: 11px; margin-top: 1px; }
+  .entry-rsn { font-size: 11px; color: var(--muted); }
+
+  /* target state */
+  .target-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .target-row:last-child { border-bottom: none; }
+  .target-left { display: flex; align-items: center; gap: 10px; }
+  .target-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .target-sym {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .target-name { font-size: 11px; color: var(--muted); }
+  .target-right { text-align: right; }
+  .target-val { font-size: 13px; color: var(--text); }
+  .target-pct { font-size: 11px; color: var(--muted); }
+
+  /* principle items */
+  .principle {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .principle:last-child { border-bottom: none; }
+  .principle-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--accent);
+    opacity: 0.4;
+    line-height: 1;
+    width: 24px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .principle-text { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .principle-text strong { color: var(--text); font-weight: 500; }
+
+  /* cash alert */
+  .cash-alert {
+    background: var(--amber-dim);
+    border: 1px solid var(--amber-border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .cash-alert-icon {
+    font-size: 14px;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+  .cash-alert-text { font-size: 12px; color: var(--amber); line-height: 1.55; }
+  .cash-alert-text strong { color: var(--text); }
+
+  /* section divider */
+  .section-divider {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 4px 0;
+  }
+  .section-divider-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* footer */
+  .footer {
+    padding: 20px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+  }
+  .footer-note { font-size: 10px; color: var(--faint); }
+  .footer-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    color: var(--faint);
+    letter-spacing: 0.08em;
+  }
+
+  /* animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card { animation: fadeUp 0.4s ease both; }
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.2s; }
+  .card:nth-child(5) { animation-delay: 0.25s; }
+  .card:nth-child(6) { animation-delay: 0.3s; }
+  .card:nth-child(7) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="acct-label">Fidelity · Custodial Account</div>
+      <div class="acct-title">Liam's Roth IRA</div>
+      <div class="acct-sub">Strategy &amp; Execution Plan · Apr 22, 2026</div>
+    </div>
+    <div class="header-stats">
+      <div class="hstat">
+        <div class="hstat-val">$1,989</div>
+        <div class="hstat-label">Total Value</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val pos">+$158</div>
+        <div class="hstat-label">Unrealized</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val warn">25.4%</div>
+        <div class="hstat-label">Cash Drag</div>
+      </div>
+    </div>
+  </div>
+  <div class="principle-bar">
+    <span>Core thesis:</span> This account has one job — be the most aggressive, longest-horizon, highest-growth position in Liam's financial picture. Every dollar inside compounds tax-free forever. Deploy accordingly.
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- CURRENT POSITIONS -->
+  <div class="card full">
+    <div class="card-header">
+      <div class="card-dot" style="background:var(--accent)"></div>
+      <div class="card-title">Current positions — Apr 17, 2026 snapshot</div>
+    </div>
+    <div class="card-body">
+      <div class="pos-row" style="border-bottom:1px solid var(--border2); padding-bottom:6px; margin-bottom:2px;">
+        <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);">Symbol</div>
+        <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);">Name</div>
+        <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);text-align:right;">Value</div>
+        <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);text-align:right;">Total Gain</div>
+        <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);text-align:right;">Action</div>
+      </div>
+      <div class="pos-row" style="background:rgba(251,191,36,0.04);">
+        <div class="pos-sym" style="color:var(--amber);">SPAXX</div>
+        <div class="pos-name">Money Market — idle cash</div>
+        <div class="pos-val">$505</div>
+        <div class="pos-gain flat">—</div>
+        <div class="pos-action"><span class="badge badge-deploy">deploy</span></div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-sym">SPHQ</div>
+        <div class="pos-name">Invesco S&amp;P 500 Quality ETF</div>
+        <div class="pos-val">$489</div>
+        <div class="pos-gain pos">+22.8%</div>
+        <div class="pos-action"><span class="badge badge-add">core · add</span></div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-sym">FTEC</div>
+        <div class="pos-name">Fidelity MSCI Tech ETF</div>
+        <div class="pos-val">$241</div>
+        <div class="pos-gain pos">+38.4%</div>
+        <div class="pos-action"><span class="badge badge-add">keep · add</span></div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-sym">NVDA</div>
+        <div class="pos-name">Nvidia Corp</div>
+        <div class="pos-val">$202</div>
+        <div class="pos-gain pos">+41.5%</div>
+        <div class="pos-action"><span class="badge badge-keep">hold</span></div>
+      </div>
+      <div class="pos-row" style="opacity:0.5;">
+        <div class="pos-sym" style="text-decoration:line-through;color:var(--muted);">FSTA</div>
+        <div class="pos-name">Fidelity Consumer Staples — <em>sold</em></div>
+        <div class="pos-val" style="color:var(--muted);">$160</div>
+        <div class="pos-gain flat">+8.1%</div>
+        <div class="pos-action"><span class="badge badge-sell">executed</span></div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-sym">FHLC</div>
+        <div class="pos-name">Fidelity MSCI Health Care ETF</div>
+        <div class="pos-val">$146</div>
+        <div class="pos-gain pos">+1.1%</div>
+        <div class="pos-action"><span class="badge badge-keep">keep</span></div>
+      </div>
+      <div class="pos-row" style="opacity:0.5;">
+        <div class="pos-sym" style="text-decoration:line-through;color:var(--red);">QFIN</div>
+        <div class="pos-name">360 Finance ADS (China) — <em>sold</em></div>
+        <div class="pos-val" style="color:var(--muted);">$141</div>
+        <div class="pos-gain neg">−38.5%</div>
+        <div class="pos-action"><span class="badge badge-sell">executed</span></div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-sym">FDIS</div>
+        <div class="pos-name">Fidelity Consumer Discretionary ETF</div>
+        <div class="pos-val">$104</div>
+        <div class="pos-gain pos">+19.0%</div>
+        <div class="pos-action"><span class="badge badge-keep">keep</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELLS EXECUTED -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-dot" style="background:var(--red)"></div>
+      <div class="card-title">Sells — executed</div>
+    </div>
+    <div class="card-body">
+      <div class="action-item sell">
+        <div class="action-header">
+          <div class="action-sym">QFIN</div>
+          <span class="badge badge-sell">sold at market</span>
+          <div class="action-name">360 Finance Holdings ADS</div>
+        </div>
+        <div class="action-body">Chinese fintech ADS with delisting risk, regulatory exposure, and US-China trade war in the crossfire. Losses inside a Roth carry zero tax benefit — no reason to hold.</div>
+        <div class="action-detail">Filled at $14.06 after hours · 10 shares · proceeds ~$141 · loss −$88.64 (−38.5%)</div>
+      </div>
+      <div class="action-item sell">
+        <div class="action-header">
+          <div class="action-sym">FSTA</div>
+          <span class="badge badge-sell">sold</span>
+          <div class="action-name">Fidelity Consumer Staples ETF</div>
+        </div>
+        <div class="action-body">Defensive sector positioning is wrong-fit for a 15-year growth Roth. +8.1% total return is inflation-level. Capital works harder in SPHQ or FTEC over this horizon.</div>
+        <div class="action-detail">Filled at $52.85 · 3.035 shares · proceeds ~$160</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEEPS RATIONALE -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-dot" style="background:var(--green)"></div>
+      <div class="card-title">Keeps — conviction holdings</div>
+    </div>
+    <div class="card-body">
+      <div class="action-item keep">
+        <div class="action-header">
+          <div class="action-sym">SPHQ</div>
+          <span class="badge badge-keep">core anchor</span>
+        </div>
+        <div class="action-body">Quality factor screen — high ROE, low debt, stable earnings — outperforms over long periods with lower volatility. The right anchor for this account. Add to this aggressively with proceeds.</div>
+      </div>
+      <div class="action-item keep">
+        <div class="action-header">
+          <div class="action-sym">FTEC</div>
+          <span class="badge badge-keep">keep · add</span>
+        </div>
+        <div class="action-body">Lowest-cost tech ETF (0.08% ER). Up 38.4%. Tax-free compounding on tech over 15 years inside a Roth is as close to a free lunch as investing gets.</div>
+      </div>
+      <div class="action-item keep">
+        <div class="action-header">
+          <div class="action-sym">NVDA</div>
+          <span class="badge badge-keep">hold · add on weakness</span>
+        </div>
+        <div class="action-body">AI infrastructure thesis intact. Up 41.5%. Single-share position — add another share on next meaningful pullback. Roth wrapper is an ideal home for a high-conviction, high-growth name.</div>
+      </div>
+      <div class="action-item watch">
+        <div class="action-header">
+          <div class="action-sym">FHLC</div>
+          <span class="badge badge-watch">keep — reframed</span>
+        </div>
+        <div class="action-body">Not a defensive bet — think of it as Eli Lilly (12.7%) + J&amp;J (8.9%) + AbbVie (6.1%) in a cheap wrapper. GLP-1 / obesity drug secular tailwind is a decade-long story. Beta 0.66.</div>
+      </div>
+      <div class="action-item keep">
+        <div class="action-header">
+          <div class="action-sym">FDIS</div>
+          <span class="badge badge-keep">keep — reframed</span>
+        </div>
+        <div class="action-body">Amazon (23%) + Tesla (17%) at 0.08% ER. Not a consumer cyclical bet — it's a low-friction way to own the two names with the most long-horizon compounding potential in discretionary.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="section-divider">
+    <div class="section-divider-label">Cash deployment &amp; new contributions</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- DEPLOY CASH -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-dot" style="background:var(--blue)"></div>
+      <div class="card-title">Deploy the idle cash — immediate</div>
+    </div>
+    <div class="card-body">
+      <div class="cash-alert">
+        <div class="cash-alert-icon">!</div>
+        <div class="cash-alert-text"><strong>$505 sitting in SPAXX is the highest-priority fix.</strong> 25% of the account earning money market rates inside a tax-free wrapper is a significant long-term opportunity cost. Put ~$400 to work immediately.</div>
+      </div>
+      <div class="action-item deploy">
+        <div class="action-header">
+          <div class="action-sym">SPHQ</div>
+          <span class="badge badge-deploy">~$400</span>
+        </div>
+        <div class="action-body">Primary destination for QFIN proceeds + most of SPAXX. Takes SPHQ to roughly 45% of the account — exactly where the core anchor should sit. Buy at market; don't overthink it at this account size.</div>
+        <div class="action-detail">~5 shares at current price · new SPHQ total ~$900</div>
+      </div>
+      <div class="action-item deploy">
+        <div class="action-header">
+          <div class="action-sym">FTEC</div>
+          <span class="badge badge-deploy">~$241</span>
+        </div>
+        <div class="action-body">Secondary destination — brings FTEC to a second meaningful position in the account. Tech on a long horizon, tax-free, zero cost drag.</div>
+        <div class="action-detail">~1 share at current price · new FTEC total ~$480</div>
+      </div>
+      <div style="padding:10px 0 2px; font-size:11px; color:var(--muted);">
+        Leave ~$100 in SPAXX as a buffer for opportunistic adds. Keep the $1,000 new contribution dry for entry point opportunities below.
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTRY POINTS -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-dot" style="background:var(--amber)"></div>
+      <div class="card-title">Entry points — wait for weakness</div>
+    </div>
+    <div class="card-body">
+      <div class="action-item wait" style="margin-bottom:14px;">
+        <div class="action-body" style="color:var(--text);">All three targets are RSI &gt;70 and near 52-week highs after the tariff-relief rally. Deploy the $1,000 new contribution only when charts cool. Set <strong>price alerts</strong>, not limit orders.</div>
+      </div>
+      <table class="entry-table">
+        <thead>
+          <tr>
+            <th>Target</th>
+            <th class="r">Current</th>
+            <th class="r">First alert</th>
+            <th class="r">Strong buy zone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="entry-sym">NVDA</div>
+              <div class="entry-name">Nvidia Corp · add 1 share</div>
+            </td>
+            <td class="entry-cur">~$200</td>
+            <td class="entry-zone"><span class="z1">$185</span></td>
+            <td class="entry-zone"><span class="z2">$175–180</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="entry-sym">FTEC</div>
+              <div class="entry-name">Fidelity Tech ETF · add more</div>
+            </td>
+            <td class="entry-cur">~$240</td>
+            <td class="entry-zone"><span class="z1">$215</span></td>
+            <td class="entry-zone"><span class="z2">$200–210</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="entry-sym">SPHQ</div>
+              <div class="entry-name">S&amp;P 500 Quality ETF · add more</div>
+            </td>
+            <td class="entry-cur">~$80</td>
+            <td class="entry-zone"><span class="z1">$77</span></td>
+            <td class="entry-zone"><span class="z2">$74–76</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px; font-size:10px; color:var(--faint); line-height:1.6;">
+        RSI above 70 on all three = buying someone else's momentum. Wait for RSI to cool to 50–60 range. These are Roth positions with a 15-year horizon — you have time, use it.
+      </div>
+    </div>
+  </div>
+
+  <!-- TARGET STATE -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-dot" style="background:var(--teal)"></div>
+      <div class="card-title">Target allocation — after cleanup</div>
+    </div>
+    <div class="card-body">
+      <div class="alloc-row">
+        <div class="alloc-sym">SPHQ</div>
+        <div class="alloc-bg"><div class="alloc-fill" style="width:45%;background:var(--blue);"></div></div>
+        <div class="alloc-pct" style="color:var(--blue);">45%</div>
+        <div class="alloc-label">Core anchor</div>
+      </div>
+      <div class="alloc-row">
+        <div class="alloc-sym">FTEC</div>
+        <div class="alloc-bg"><div class="alloc-fill" style="width:28%;background:var(--teal);"></div></div>
+        <div class="alloc-pct" style="color:var(--teal);">28%</div>
+        <div class="alloc-label">Tech growth</div>
+      </div>
+      <div class="alloc-row">
+        <div class="alloc-sym">NVDA</div>
+        <div class="alloc-bg"><div class="alloc-fill" style="width:15%;background:var(--green);"></div></div>
+        <div class="alloc-pct" style="color:var(--green);">15%</div>
+        <div class="alloc-label">High conviction</div>
+      </div>
+      <div class="alloc-row">
+        <div class="alloc-sym">FHLC</div>
+        <div class="alloc-bg"><div class="alloc-fill" style="width:7%;background:var(--accent);"></div></div>
+        <div class="alloc-pct" style="color:var(--accent);">7%</div>
+        <div class="alloc-label">Biopharma tilt</div>
+      </div>
+      <div class="alloc-row">
+        <div class="alloc-sym">FDIS</div>
+        <div class="alloc-bg"><div class="alloc-fill" style="width:5%;background:var(--amber);"></div></div>
+        <div class="alloc-pct" style="color:var(--amber);">5%</div>
+        <div class="alloc-label">AMZN + TSLA</div>
+      </div>
+      <div class="alloc-row">
+        <div class="alloc-sym" style="color:var(--faint);">CASH</div>
+        <div class="alloc-bg"><div class="alloc-fill" style="width:5%;background:var(--faint);"></div></div>
+        <div class="alloc-pct" style="color:var(--faint);">~5%</div>
+        <div class="alloc-label">Buffer only</div>
+      </div>
+      <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="font-size:11px;color:var(--muted);">Estimated total after deployment</span>
+          <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);">~$1,989</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="font-size:11px;color:var(--muted);">SPAXX after cleanup (target)</span>
+          <span style="font-size:12px;color:var(--green);">~$100 (&lt;5%)</span>
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+          <span style="font-size:11px;color:var(--muted);">Position count</span>
+          <span style="font-size:12px;color:var(--text);">8 → 5 active</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIDING PRINCIPLES -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-dot" style="background:var(--accent)"></div>
+      <div class="card-title">Guiding principles</div>
+    </div>
+    <div class="card-body">
+      <div class="principle">
+        <div class="principle-num">1</div>
+        <div class="principle-text"><strong>Tax-free compounding is the whole point.</strong> Every dollar inside this Roth grows permanently free of capital gains tax. Treat idle cash as waste — it earns nothing on the tax-free dimension that matters.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">2</div>
+        <div class="principle-text"><strong>Losses inside a Roth are unrecoverable.</strong> Unlike a taxable UTMA account, you cannot harvest losses for tax benefit. QFIN was the clearest example — exit losers with no recovery thesis immediately.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">3</div>
+        <div class="principle-text"><strong>15-year horizon changes everything.</strong> Defensive sector tilts (staples, utilities) belong in a retiree's Roth. Liam's Roth should be maximum-growth oriented — SPHQ + FTEC + NVDA is the right spine.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">4</div>
+        <div class="principle-text"><strong>RSI &gt;70 means patience, not action.</strong> Set price alerts at logical support levels. Don't chase recovery rallies. The entry points will come — and buying right costs nothing in a long-horizon account.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">5</div>
+        <div class="principle-text"><strong>Add to winners on every contribution cycle.</strong> Each new annual contribution goes to SPHQ first, FTEC second, then NVDA on any pullback. Don't introduce new names without a clear 15-year thesis.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-note">Not investment advice. For planning purposes only. Data as of Apr 17, 2026.</div>
+  <div class="footer-tag">LIAM · ROTH IRA · FIDELITY #258182816</div>
+</div>
+
+</body>
+</html>
